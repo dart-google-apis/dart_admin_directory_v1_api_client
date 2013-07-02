@@ -12,7 +12,7 @@ class Alias {
   /** Kind of resource this is. */
   core.String kind;
 
-  /** User's primary email (Read-only) */
+  /** Group's primary email (Read-only) User's primary email (Read-only) */
   core.String primaryEmail;
 
   /** Create new Alias from JSON data */
@@ -142,7 +142,7 @@ class ChromeOsDevice {
   /** Chromebook order number (Read-only) */
   core.String orderNumber;
 
-  /** OrgUnit of the device (Read-only) */
+  /** OrgUnit of the device */
   core.String orgUnitPath;
 
   /** Chromebook Os Version (Read-only) */
@@ -356,7 +356,7 @@ class ChromeOsDevices {
 /** JSON template for Group resource in Apps Directory API. */
 class Group {
 
-  /** Is the group created by admin * */
+  /** Is the group created by admin (Read-only) * */
   core.bool adminCreated;
 
   /** List of aliases (Read-only) */
@@ -513,10 +513,10 @@ class Groups {
 /** JSON template for Member resource in Apps Directory API. */
 class Member {
 
-  /** Email of member */
+  /** Email of member (Read-only) */
   core.String email;
 
-  /** Unique identifier of group (Read-only) Unique identifier of member (Read-only) */
+  /** Unique identifier of customer member (Read-only) Unique identifier of group (Read-only) Unique identifier of member (Read-only) */
   core.String id;
 
   /** Kind of resource this is. */
@@ -1077,7 +1077,7 @@ class User {
   /** Boolean indicating if the user should change password in next login */
   core.bool changePasswordAtNextLogin;
 
-  /** User's Google account creation time. */
+  /** User's Google account creation time. (Read-only) */
   core.String creationTime;
 
   /** CustomerId of User (Read-only) */
@@ -1116,7 +1116,7 @@ class User {
   /** Kind of resource this is. */
   core.String kind;
 
-  /** User's last login time. */
+  /** User's last login time. (Read-only) */
   core.String lastLoginTime;
 
   /** User's name */
