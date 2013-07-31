@@ -1,9 +1,11 @@
-part of admin_directory_v1_api_client;
+part of admin_directory_v1_api;
 
-class ChromeosdevicesResource_ extends Resource {
+class ChromeosdevicesResource_ {
 
-  ChromeosdevicesResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  ChromeosdevicesResource_(Client client) :
+      _client = client;
 
   /**
    * Retrieve Chrome OS Device
@@ -223,14 +225,15 @@ class ChromeosdevicesResource_ extends Resource {
   }
 }
 
-class GroupsResource_ extends Resource {
+class GroupsResource_ {
 
-  GroupsAliasesResource_ _aliases;
-  GroupsAliasesResource_ get aliases => _aliases;
+  final Client _client;
 
-  GroupsResource_(Client client) : super(client) {
-  _aliases = new GroupsAliasesResource_(client);
-  }
+  final GroupsAliasesResource_ aliases;
+
+  GroupsResource_(Client client) :
+      _client = client,
+      aliases = new GroupsAliasesResource_(client);
 
   /**
    * Delete Group
@@ -444,10 +447,12 @@ class GroupsResource_ extends Resource {
   }
 }
 
-class GroupsAliasesResource_ extends Resource {
+class GroupsAliasesResource_ {
 
-  GroupsAliasesResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  GroupsAliasesResource_(Client client) :
+      _client = client;
 
   /**
    * Remove a alias for the group
@@ -554,10 +559,12 @@ class GroupsAliasesResource_ extends Resource {
   }
 }
 
-class MembersResource_ extends Resource {
+class MembersResource_ {
 
-  MembersResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  MembersResource_(Client client) :
+      _client = client;
 
   /**
    * Remove membership.
@@ -789,10 +796,12 @@ class MembersResource_ extends Resource {
   }
 }
 
-class MobiledevicesResource_ extends Resource {
+class MobiledevicesResource_ {
 
-  MobiledevicesResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  MobiledevicesResource_(Client client) :
+      _client = client;
 
   /**
    * Take action on Mobile Device
@@ -991,10 +1000,12 @@ class MobiledevicesResource_ extends Resource {
   }
 }
 
-class OrgunitsResource_ extends Resource {
+class OrgunitsResource_ {
 
-  OrgunitsResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  OrgunitsResource_(Client client) :
+      _client = client;
 
   /**
    * Remove Organization Unit
@@ -1002,10 +1013,11 @@ class OrgunitsResource_ extends Resource {
    * [customerId] - Immutable id of the Google Apps account
    *
    * [orgUnitPath] - Full path of the organization unit
+   *   Repeated values: allowed
    *
    * [optParams] - Additional query parameters
    */
-  async.Future<core.Map> delete(core.String customerId, core.String orgUnitPath, {core.Map optParams}) {
+  async.Future<core.Map> delete(core.String customerId, core.List<core.String> orgUnitPath, {core.Map optParams}) {
     var url = "customer/{customerId}/orgunits{/orgUnitPath*}";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -1038,10 +1050,11 @@ class OrgunitsResource_ extends Resource {
    * [customerId] - Immutable id of the Google Apps account
    *
    * [orgUnitPath] - Full path of the organization unit
+   *   Repeated values: allowed
    *
    * [optParams] - Additional query parameters
    */
-  async.Future<OrgUnit> get(core.String customerId, core.String orgUnitPath, {core.Map optParams}) {
+  async.Future<OrgUnit> get(core.String customerId, core.List<core.String> orgUnitPath, {core.Map optParams}) {
     var url = "customer/{customerId}/orgunits{/orgUnitPath*}";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -1158,10 +1171,11 @@ class OrgunitsResource_ extends Resource {
    * [customerId] - Immutable id of the Google Apps account
    *
    * [orgUnitPath] - Full path of the organization unit
+   *   Repeated values: allowed
    *
    * [optParams] - Additional query parameters
    */
-  async.Future<OrgUnit> patch(OrgUnit request, core.String customerId, core.String orgUnitPath, {core.Map optParams}) {
+  async.Future<OrgUnit> patch(OrgUnit request, core.String customerId, core.List<core.String> orgUnitPath, {core.Map optParams}) {
     var url = "customer/{customerId}/orgunits{/orgUnitPath*}";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -1197,10 +1211,11 @@ class OrgunitsResource_ extends Resource {
    * [customerId] - Immutable id of the Google Apps account
    *
    * [orgUnitPath] - Full path of the organization unit
+   *   Repeated values: allowed
    *
    * [optParams] - Additional query parameters
    */
-  async.Future<OrgUnit> update(OrgUnit request, core.String customerId, core.String orgUnitPath, {core.Map optParams}) {
+  async.Future<OrgUnit> update(OrgUnit request, core.String customerId, core.List<core.String> orgUnitPath, {core.Map optParams}) {
     var url = "customer/{customerId}/orgunits{/orgUnitPath*}";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -1229,17 +1244,17 @@ class OrgunitsResource_ extends Resource {
   }
 }
 
-class UsersResource_ extends Resource {
+class UsersResource_ {
 
-  UsersAliasesResource_ _aliases;
-  UsersAliasesResource_ get aliases => _aliases;
-  UsersPhotosResource_ _photos;
-  UsersPhotosResource_ get photos => _photos;
+  final Client _client;
 
-  UsersResource_(Client client) : super(client) {
-  _aliases = new UsersAliasesResource_(client);
-  _photos = new UsersPhotosResource_(client);
-  }
+  final UsersAliasesResource_ aliases;
+  final UsersPhotosResource_ photos;
+
+  UsersResource_(Client client) :
+      _client = client,
+      aliases = new UsersAliasesResource_(client),
+      photos = new UsersPhotosResource_(client);
 
   /**
    * Delete user
@@ -1544,10 +1559,12 @@ class UsersResource_ extends Resource {
   }
 }
 
-class UsersAliasesResource_ extends Resource {
+class UsersAliasesResource_ {
 
-  UsersAliasesResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  UsersAliasesResource_(Client client) :
+      _client = client;
 
   /**
    * Remove a alias for the user
@@ -1654,10 +1671,12 @@ class UsersAliasesResource_ extends Resource {
   }
 }
 
-class UsersPhotosResource_ extends Resource {
+class UsersPhotosResource_ {
 
-  UsersPhotosResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  UsersPhotosResource_(Client client) :
+      _client = client;
 
   /**
    * Remove photos for the user

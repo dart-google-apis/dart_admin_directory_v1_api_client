@@ -1,4 +1,4 @@
-part of admin_directory_v1_api_client;
+part of admin_directory_v1_api;
 
 /** JSON template for Alias object in Apps Directory API. */
 class Alias {
@@ -68,10 +68,7 @@ class Aliases {
   /** Create new Aliases from JSON data */
   Aliases.fromJson(core.Map json) {
     if (json.containsKey("aliases")) {
-      aliases = [];
-      json["aliases"].forEach((item) {
-        aliases.add(new Alias.fromJson(item));
-      });
+      aliases = json["aliases"].map((aliasesItem) => new Alias.fromJson(aliasesItem)).toList();
     }
     if (json.containsKey("kind")) {
       kind = json["kind"];
@@ -83,10 +80,7 @@ class Aliases {
     var output = new core.Map();
 
     if (aliases != null) {
-      output["aliases"] = new core.List();
-      aliases.forEach((item) {
-        output["aliases"].add(item.toJson());
-      });
+      output["aliases"] = aliases.map((aliasesItem) => aliasesItem.toJson()).toList();
     }
     if (kind != null) {
       output["kind"] = kind;
@@ -315,10 +309,7 @@ class ChromeOsDevices {
   /** Create new ChromeOsDevices from JSON data */
   ChromeOsDevices.fromJson(core.Map json) {
     if (json.containsKey("chromeosdevices")) {
-      chromeosdevices = [];
-      json["chromeosdevices"].forEach((item) {
-        chromeosdevices.add(new ChromeOsDevice.fromJson(item));
-      });
+      chromeosdevices = json["chromeosdevices"].map((chromeosdevicesItem) => new ChromeOsDevice.fromJson(chromeosdevicesItem)).toList();
     }
     if (json.containsKey("kind")) {
       kind = json["kind"];
@@ -333,10 +324,7 @@ class ChromeOsDevices {
     var output = new core.Map();
 
     if (chromeosdevices != null) {
-      output["chromeosdevices"] = new core.List();
-      chromeosdevices.forEach((item) {
-        output["chromeosdevices"].add(item.toJson());
-      });
+      output["chromeosdevices"] = chromeosdevices.map((chromeosdevicesItem) => chromeosdevicesItem.toJson()).toList();
     }
     if (kind != null) {
       output["kind"] = kind;
@@ -386,10 +374,7 @@ class Group {
       adminCreated = json["adminCreated"];
     }
     if (json.containsKey("aliases")) {
-      aliases = [];
-      json["aliases"].forEach((item) {
-        aliases.add(item);
-      });
+      aliases = json["aliases"].toList();
     }
     if (json.containsKey("description")) {
       description = json["description"];
@@ -407,10 +392,7 @@ class Group {
       name = json["name"];
     }
     if (json.containsKey("nonEditableAliases")) {
-      nonEditableAliases = [];
-      json["nonEditableAliases"].forEach((item) {
-        nonEditableAliases.add(item);
-      });
+      nonEditableAliases = json["nonEditableAliases"].toList();
     }
   }
 
@@ -422,10 +404,7 @@ class Group {
       output["adminCreated"] = adminCreated;
     }
     if (aliases != null) {
-      output["aliases"] = new core.List();
-      aliases.forEach((item) {
-        output["aliases"].add(item);
-      });
+      output["aliases"] = aliases.toList();
     }
     if (description != null) {
       output["description"] = description;
@@ -443,10 +422,7 @@ class Group {
       output["name"] = name;
     }
     if (nonEditableAliases != null) {
-      output["nonEditableAliases"] = new core.List();
-      nonEditableAliases.forEach((item) {
-        output["nonEditableAliases"].add(item);
-      });
+      output["nonEditableAliases"] = nonEditableAliases.toList();
     }
 
     return output;
@@ -472,10 +448,7 @@ class Groups {
   /** Create new Groups from JSON data */
   Groups.fromJson(core.Map json) {
     if (json.containsKey("groups")) {
-      groups = [];
-      json["groups"].forEach((item) {
-        groups.add(new Group.fromJson(item));
-      });
+      groups = json["groups"].map((groupsItem) => new Group.fromJson(groupsItem)).toList();
     }
     if (json.containsKey("kind")) {
       kind = json["kind"];
@@ -490,10 +463,7 @@ class Groups {
     var output = new core.Map();
 
     if (groups != null) {
-      output["groups"] = new core.List();
-      groups.forEach((item) {
-        output["groups"].add(item.toJson());
-      });
+      output["groups"] = groups.map((groupsItem) => groupsItem.toJson()).toList();
     }
     if (kind != null) {
       output["kind"] = kind;
@@ -593,10 +563,7 @@ class Members {
       kind = json["kind"];
     }
     if (json.containsKey("members")) {
-      members = [];
-      json["members"].forEach((item) {
-        members.add(new Member.fromJson(item));
-      });
+      members = json["members"].map((membersItem) => new Member.fromJson(membersItem)).toList();
     }
     if (json.containsKey("nextPageToken")) {
       nextPageToken = json["nextPageToken"];
@@ -611,10 +578,7 @@ class Members {
       output["kind"] = kind;
     }
     if (members != null) {
-      output["members"] = new core.List();
-      members.forEach((item) {
-        output["members"].add(item.toJson());
-      });
+      output["members"] = members.map((membersItem) => membersItem.toJson()).toList();
     }
     if (nextPageToken != null) {
       output["nextPageToken"] = nextPageToken;
@@ -676,19 +640,13 @@ class MobileDevice {
   /** Create new MobileDevice from JSON data */
   MobileDevice.fromJson(core.Map json) {
     if (json.containsKey("applications")) {
-      applications = [];
-      json["applications"].forEach((item) {
-        applications.add(new MobileDeviceApplications.fromJson(item));
-      });
+      applications = json["applications"].map((applicationsItem) => new MobileDeviceApplications.fromJson(applicationsItem)).toList();
     }
     if (json.containsKey("deviceId")) {
       deviceId = json["deviceId"];
     }
     if (json.containsKey("email")) {
-      email = [];
-      json["email"].forEach((item) {
-        email.add(item);
-      });
+      email = json["email"].toList();
     }
     if (json.containsKey("firstSync")) {
       firstSync = json["firstSync"];
@@ -706,10 +664,7 @@ class MobileDevice {
       model = json["model"];
     }
     if (json.containsKey("name")) {
-      name = [];
-      json["name"].forEach((item) {
-        name.add(item);
-      });
+      name = json["name"].toList();
     }
     if (json.containsKey("os")) {
       os = json["os"];
@@ -733,19 +688,13 @@ class MobileDevice {
     var output = new core.Map();
 
     if (applications != null) {
-      output["applications"] = new core.List();
-      applications.forEach((item) {
-        output["applications"].add(item.toJson());
-      });
+      output["applications"] = applications.map((applicationsItem) => applicationsItem.toJson()).toList();
     }
     if (deviceId != null) {
       output["deviceId"] = deviceId;
     }
     if (email != null) {
-      output["email"] = new core.List();
-      email.forEach((item) {
-        output["email"].add(item);
-      });
+      output["email"] = email.toList();
     }
     if (firstSync != null) {
       output["firstSync"] = firstSync;
@@ -763,10 +712,7 @@ class MobileDevice {
       output["model"] = model;
     }
     if (name != null) {
-      output["name"] = new core.List();
-      name.forEach((item) {
-        output["name"].add(item);
-      });
+      output["name"] = name.toList();
     }
     if (os != null) {
       output["os"] = os;
@@ -818,10 +764,7 @@ class MobileDeviceApplications {
       packageName = json["packageName"];
     }
     if (json.containsKey("permission")) {
-      permission = [];
-      json["permission"].forEach((item) {
-        permission.add(item);
-      });
+      permission = json["permission"].toList();
     }
     if (json.containsKey("versionCode")) {
       versionCode = json["versionCode"];
@@ -842,10 +785,7 @@ class MobileDeviceApplications {
       output["packageName"] = packageName;
     }
     if (permission != null) {
-      output["permission"] = new core.List();
-      permission.forEach((item) {
-        output["permission"].add(item);
-      });
+      output["permission"] = permission.toList();
     }
     if (versionCode != null) {
       output["versionCode"] = versionCode;
@@ -909,10 +849,7 @@ class MobileDevices {
       kind = json["kind"];
     }
     if (json.containsKey("mobiledevices")) {
-      mobiledevices = [];
-      json["mobiledevices"].forEach((item) {
-        mobiledevices.add(new MobileDevice.fromJson(item));
-      });
+      mobiledevices = json["mobiledevices"].map((mobiledevicesItem) => new MobileDevice.fromJson(mobiledevicesItem)).toList();
     }
     if (json.containsKey("nextPageToken")) {
       nextPageToken = json["nextPageToken"];
@@ -927,10 +864,7 @@ class MobileDevices {
       output["kind"] = kind;
     }
     if (mobiledevices != null) {
-      output["mobiledevices"] = new core.List();
-      mobiledevices.forEach((item) {
-        output["mobiledevices"].add(item.toJson());
-      });
+      output["mobiledevices"] = mobiledevices.map((mobiledevicesItem) => mobiledevicesItem.toJson()).toList();
     }
     if (nextPageToken != null) {
       output["nextPageToken"] = nextPageToken;
@@ -1033,10 +967,7 @@ class OrgUnits {
       kind = json["kind"];
     }
     if (json.containsKey("organizationUnits")) {
-      organizationUnits = [];
-      json["organizationUnits"].forEach((item) {
-        organizationUnits.add(new OrgUnit.fromJson(item));
-      });
+      organizationUnits = json["organizationUnits"].map((organizationUnitsItem) => new OrgUnit.fromJson(organizationUnitsItem)).toList();
     }
   }
 
@@ -1048,10 +979,7 @@ class OrgUnits {
       output["kind"] = kind;
     }
     if (organizationUnits != null) {
-      output["organizationUnits"] = new core.List();
-      organizationUnits.forEach((item) {
-        output["organizationUnits"].add(item.toJson());
-      });
+      output["organizationUnits"] = organizationUnits.map((organizationUnitsItem) => organizationUnitsItem.toJson()).toList();
     }
 
     return output;
@@ -1082,6 +1010,8 @@ class User {
 
   /** CustomerId of User (Read-only) */
   core.String customerId;
+
+  core.String deletionTime;
 
   /** Emails of User */
   core.List<UserEmail> emails;
@@ -1155,19 +1085,13 @@ class User {
   /** Create new User from JSON data */
   User.fromJson(core.Map json) {
     if (json.containsKey("addresses")) {
-      addresses = [];
-      json["addresses"].forEach((item) {
-        addresses.add(new UserAddress.fromJson(item));
-      });
+      addresses = json["addresses"].map((addressesItem) => new UserAddress.fromJson(addressesItem)).toList();
     }
     if (json.containsKey("agreedToTerms")) {
       agreedToTerms = json["agreedToTerms"];
     }
     if (json.containsKey("aliases")) {
-      aliases = [];
-      json["aliases"].forEach((item) {
-        aliases.add(item);
-      });
+      aliases = json["aliases"].toList();
     }
     if (json.containsKey("changePasswordAtNextLogin")) {
       changePasswordAtNextLogin = json["changePasswordAtNextLogin"];
@@ -1178,17 +1102,14 @@ class User {
     if (json.containsKey("customerId")) {
       customerId = json["customerId"];
     }
+    if (json.containsKey("deletionTime")) {
+      deletionTime = json["deletionTime"];
+    }
     if (json.containsKey("emails")) {
-      emails = [];
-      json["emails"].forEach((item) {
-        emails.add(new UserEmail.fromJson(item));
-      });
+      emails = json["emails"].map((emailsItem) => new UserEmail.fromJson(emailsItem)).toList();
     }
     if (json.containsKey("externalIds")) {
-      externalIds = [];
-      json["externalIds"].forEach((item) {
-        externalIds.add(new UserExternalId.fromJson(item));
-      });
+      externalIds = json["externalIds"].map((externalIdsItem) => new UserExternalId.fromJson(externalIdsItem)).toList();
     }
     if (json.containsKey("hashFunction")) {
       hashFunction = json["hashFunction"];
@@ -1197,10 +1118,7 @@ class User {
       id = json["id"];
     }
     if (json.containsKey("ims")) {
-      ims = [];
-      json["ims"].forEach((item) {
-        ims.add(new UserIm.fromJson(item));
-      });
+      ims = json["ims"].map((imsItem) => new UserIm.fromJson(imsItem)).toList();
     }
     if (json.containsKey("includeInGlobalAddressList")) {
       includeInGlobalAddressList = json["includeInGlobalAddressList"];
@@ -1227,37 +1145,25 @@ class User {
       name = new UserName.fromJson(json["name"]);
     }
     if (json.containsKey("nonEditableAliases")) {
-      nonEditableAliases = [];
-      json["nonEditableAliases"].forEach((item) {
-        nonEditableAliases.add(item);
-      });
+      nonEditableAliases = json["nonEditableAliases"].toList();
     }
     if (json.containsKey("orgUnitPath")) {
       orgUnitPath = json["orgUnitPath"];
     }
     if (json.containsKey("organizations")) {
-      organizations = [];
-      json["organizations"].forEach((item) {
-        organizations.add(new UserOrganization.fromJson(item));
-      });
+      organizations = json["organizations"].map((organizationsItem) => new UserOrganization.fromJson(organizationsItem)).toList();
     }
     if (json.containsKey("password")) {
       password = json["password"];
     }
     if (json.containsKey("phones")) {
-      phones = [];
-      json["phones"].forEach((item) {
-        phones.add(new UserPhone.fromJson(item));
-      });
+      phones = json["phones"].map((phonesItem) => new UserPhone.fromJson(phonesItem)).toList();
     }
     if (json.containsKey("primaryEmail")) {
       primaryEmail = json["primaryEmail"];
     }
     if (json.containsKey("relations")) {
-      relations = [];
-      json["relations"].forEach((item) {
-        relations.add(new UserRelation.fromJson(item));
-      });
+      relations = json["relations"].map((relationsItem) => new UserRelation.fromJson(relationsItem)).toList();
     }
     if (json.containsKey("suspended")) {
       suspended = json["suspended"];
@@ -1275,19 +1181,13 @@ class User {
     var output = new core.Map();
 
     if (addresses != null) {
-      output["addresses"] = new core.List();
-      addresses.forEach((item) {
-        output["addresses"].add(item.toJson());
-      });
+      output["addresses"] = addresses.map((addressesItem) => addressesItem.toJson()).toList();
     }
     if (agreedToTerms != null) {
       output["agreedToTerms"] = agreedToTerms;
     }
     if (aliases != null) {
-      output["aliases"] = new core.List();
-      aliases.forEach((item) {
-        output["aliases"].add(item);
-      });
+      output["aliases"] = aliases.toList();
     }
     if (changePasswordAtNextLogin != null) {
       output["changePasswordAtNextLogin"] = changePasswordAtNextLogin;
@@ -1298,17 +1198,14 @@ class User {
     if (customerId != null) {
       output["customerId"] = customerId;
     }
+    if (deletionTime != null) {
+      output["deletionTime"] = deletionTime;
+    }
     if (emails != null) {
-      output["emails"] = new core.List();
-      emails.forEach((item) {
-        output["emails"].add(item.toJson());
-      });
+      output["emails"] = emails.map((emailsItem) => emailsItem.toJson()).toList();
     }
     if (externalIds != null) {
-      output["externalIds"] = new core.List();
-      externalIds.forEach((item) {
-        output["externalIds"].add(item.toJson());
-      });
+      output["externalIds"] = externalIds.map((externalIdsItem) => externalIdsItem.toJson()).toList();
     }
     if (hashFunction != null) {
       output["hashFunction"] = hashFunction;
@@ -1317,10 +1214,7 @@ class User {
       output["id"] = id;
     }
     if (ims != null) {
-      output["ims"] = new core.List();
-      ims.forEach((item) {
-        output["ims"].add(item.toJson());
-      });
+      output["ims"] = ims.map((imsItem) => imsItem.toJson()).toList();
     }
     if (includeInGlobalAddressList != null) {
       output["includeInGlobalAddressList"] = includeInGlobalAddressList;
@@ -1347,37 +1241,25 @@ class User {
       output["name"] = name.toJson();
     }
     if (nonEditableAliases != null) {
-      output["nonEditableAliases"] = new core.List();
-      nonEditableAliases.forEach((item) {
-        output["nonEditableAliases"].add(item);
-      });
+      output["nonEditableAliases"] = nonEditableAliases.toList();
     }
     if (orgUnitPath != null) {
       output["orgUnitPath"] = orgUnitPath;
     }
     if (organizations != null) {
-      output["organizations"] = new core.List();
-      organizations.forEach((item) {
-        output["organizations"].add(item.toJson());
-      });
+      output["organizations"] = organizations.map((organizationsItem) => organizationsItem.toJson()).toList();
     }
     if (password != null) {
       output["password"] = password;
     }
     if (phones != null) {
-      output["phones"] = new core.List();
-      phones.forEach((item) {
-        output["phones"].add(item.toJson());
-      });
+      output["phones"] = phones.map((phonesItem) => phonesItem.toJson()).toList();
     }
     if (primaryEmail != null) {
       output["primaryEmail"] = primaryEmail;
     }
     if (relations != null) {
-      output["relations"] = new core.List();
-      relations.forEach((item) {
-        output["relations"].add(item.toJson());
-      });
+      output["relations"] = relations.map((relationsItem) => relationsItem.toJson()).toList();
     }
     if (suspended != null) {
       output["suspended"] = suspended;
@@ -2148,10 +2030,7 @@ class Users {
       trigger_event = json["trigger_event"];
     }
     if (json.containsKey("users")) {
-      users = [];
-      json["users"].forEach((item) {
-        users.add(new User.fromJson(item));
-      });
+      users = json["users"].map((usersItem) => new User.fromJson(usersItem)).toList();
     }
   }
 
@@ -2169,10 +2048,7 @@ class Users {
       output["trigger_event"] = trigger_event;
     }
     if (users != null) {
-      output["users"] = new core.List();
-      users.forEach((item) {
-        output["users"].add(item.toJson());
-      });
+      output["users"] = users.map((usersItem) => usersItem.toJson()).toList();
     }
 
     return output;
@@ -2183,3 +2059,16 @@ class Users {
 
 }
 
+core.Map _mapMap(core.Map source, [core.Object convert(core.Object source) = null]) {
+  assert(source != null);
+  var result = new dart_collection.LinkedHashMap();
+  source.forEach((core.String key, value) {
+    assert(key != null);
+    if(convert == null) {
+      result[key] = value;
+    } else {
+      result[key] = convert(value);
+    }
+  });
+  return result;
+}
