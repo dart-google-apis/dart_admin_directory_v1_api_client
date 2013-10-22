@@ -2,7 +2,7 @@ library admin_directory_v1_api.browser;
 
 import "package:google_oauth2_client/google_oauth2_browser.dart" as oauth;
 
-import 'package:google_admin_directory_v1_api/src/cloud_api_browser.dart';
+import 'package:google_admin_directory_v1_api/src/browser_client.dart';
 import "package:google_admin_directory_v1_api/admin_directory_v1_api_client.dart";
 
 /** Apps Directory API lets you view and manage enterprise resources like user, groups, OrgUnit, devices. */

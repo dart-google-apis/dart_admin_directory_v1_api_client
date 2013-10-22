@@ -6,6 +6,9 @@ class Alias {
   /** A alias email */
   core.String alias;
 
+  /** ETag of the resource. */
+  core.String etag;
+
   /** Unique id of the group (Read-only) Unique id of the user (Read-only) */
   core.String id;
 
@@ -19,6 +22,9 @@ class Alias {
   Alias.fromJson(core.Map json) {
     if (json.containsKey("alias")) {
       alias = json["alias"];
+    }
+    if (json.containsKey("etag")) {
+      etag = json["etag"];
     }
     if (json.containsKey("id")) {
       id = json["id"];
@@ -38,6 +44,9 @@ class Alias {
     if (alias != null) {
       output["alias"] = alias;
     }
+    if (etag != null) {
+      output["etag"] = etag;
+    }
     if (id != null) {
       output["id"] = id;
     }
@@ -52,7 +61,7 @@ class Alias {
   }
 
   /** Return String representation of Alias */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -62,6 +71,9 @@ class Aliases {
   /** List of alias objects. */
   core.List<Alias> aliases;
 
+  /** ETag of the resource. */
+  core.String etag;
+
   /** Kind of resource this is. */
   core.String kind;
 
@@ -69,6 +81,9 @@ class Aliases {
   Aliases.fromJson(core.Map json) {
     if (json.containsKey("aliases")) {
       aliases = json["aliases"].map((aliasesItem) => new Alias.fromJson(aliasesItem)).toList();
+    }
+    if (json.containsKey("etag")) {
+      etag = json["etag"];
     }
     if (json.containsKey("kind")) {
       kind = json["kind"];
@@ -82,6 +97,9 @@ class Aliases {
     if (aliases != null) {
       output["aliases"] = aliases.map((aliasesItem) => aliasesItem.toJson()).toList();
     }
+    if (etag != null) {
+      output["etag"] = etag;
+    }
     if (kind != null) {
       output["kind"] = kind;
     }
@@ -90,7 +108,7 @@ class Aliases {
   }
 
   /** Return String representation of Aliases */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -108,6 +126,9 @@ class ChromeOsDevice {
 
   /** Unique identifier of Chrome OS Device (Read-only) */
   core.String deviceId;
+
+  /** ETag of the resource. */
+  core.String etag;
 
   /** Chromebook firmware version (Read-only) */
   core.String firmwareVersion;
@@ -170,6 +191,9 @@ class ChromeOsDevice {
     }
     if (json.containsKey("deviceId")) {
       deviceId = json["deviceId"];
+    }
+    if (json.containsKey("etag")) {
+      etag = json["etag"];
     }
     if (json.containsKey("firmwareVersion")) {
       firmwareVersion = json["firmwareVersion"];
@@ -237,6 +261,9 @@ class ChromeOsDevice {
     if (deviceId != null) {
       output["deviceId"] = deviceId;
     }
+    if (etag != null) {
+      output["etag"] = etag;
+    }
     if (firmwareVersion != null) {
       output["firmwareVersion"] = firmwareVersion;
     }
@@ -290,7 +317,7 @@ class ChromeOsDevice {
   }
 
   /** Return String representation of ChromeOsDevice */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -299,6 +326,9 @@ class ChromeOsDevices {
 
   /** List of Chrome OS Device objects. */
   core.List<ChromeOsDevice> chromeosdevices;
+
+  /** ETag of the resource. */
+  core.String etag;
 
   /** Kind of resource this is. */
   core.String kind;
@@ -310,6 +340,9 @@ class ChromeOsDevices {
   ChromeOsDevices.fromJson(core.Map json) {
     if (json.containsKey("chromeosdevices")) {
       chromeosdevices = json["chromeosdevices"].map((chromeosdevicesItem) => new ChromeOsDevice.fromJson(chromeosdevicesItem)).toList();
+    }
+    if (json.containsKey("etag")) {
+      etag = json["etag"];
     }
     if (json.containsKey("kind")) {
       kind = json["kind"];
@@ -326,6 +359,9 @@ class ChromeOsDevices {
     if (chromeosdevices != null) {
       output["chromeosdevices"] = chromeosdevices.map((chromeosdevicesItem) => chromeosdevicesItem.toJson()).toList();
     }
+    if (etag != null) {
+      output["etag"] = etag;
+    }
     if (kind != null) {
       output["kind"] = kind;
     }
@@ -337,7 +373,7 @@ class ChromeOsDevices {
   }
 
   /** Return String representation of ChromeOsDevices */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -353,8 +389,14 @@ class Group {
   /** Description of the group */
   core.String description;
 
+  /** Group direct members count */
+  core.int directMembersCount;
+
   /** Email of Group */
   core.String email;
+
+  /** ETag of the resource. */
+  core.String etag;
 
   /** Unique identifier of Group (Read-only) */
   core.String id;
@@ -379,8 +421,14 @@ class Group {
     if (json.containsKey("description")) {
       description = json["description"];
     }
+    if (json.containsKey("directMembersCount")) {
+      directMembersCount = (json["directMembersCount"] is core.String) ? core.int.parse(json["directMembersCount"]) : json["directMembersCount"];
+    }
     if (json.containsKey("email")) {
       email = json["email"];
+    }
+    if (json.containsKey("etag")) {
+      etag = json["etag"];
     }
     if (json.containsKey("id")) {
       id = json["id"];
@@ -409,8 +457,14 @@ class Group {
     if (description != null) {
       output["description"] = description;
     }
+    if (directMembersCount != null) {
+      output["directMembersCount"] = directMembersCount;
+    }
     if (email != null) {
       output["email"] = email;
+    }
+    if (etag != null) {
+      output["etag"] = etag;
     }
     if (id != null) {
       output["id"] = id;
@@ -429,12 +483,15 @@ class Group {
   }
 
   /** Return String representation of Group */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
 /** JSON response template for List Groups operation in Apps Directory API. */
 class Groups {
+
+  /** ETag of the resource. */
+  core.String etag;
 
   /** List of group objects. */
   core.List<Group> groups;
@@ -447,6 +504,9 @@ class Groups {
 
   /** Create new Groups from JSON data */
   Groups.fromJson(core.Map json) {
+    if (json.containsKey("etag")) {
+      etag = json["etag"];
+    }
     if (json.containsKey("groups")) {
       groups = json["groups"].map((groupsItem) => new Group.fromJson(groupsItem)).toList();
     }
@@ -462,6 +522,9 @@ class Groups {
   core.Map toJson() {
     var output = new core.Map();
 
+    if (etag != null) {
+      output["etag"] = etag;
+    }
     if (groups != null) {
       output["groups"] = groups.map((groupsItem) => groupsItem.toJson()).toList();
     }
@@ -476,7 +539,7 @@ class Groups {
   }
 
   /** Return String representation of Groups */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -485,6 +548,9 @@ class Member {
 
   /** Email of member (Read-only) */
   core.String email;
+
+  /** ETag of the resource. */
+  core.String etag;
 
   /** Unique identifier of customer member (Read-only) Unique identifier of group (Read-only) Unique identifier of member (Read-only) */
   core.String id;
@@ -502,6 +568,9 @@ class Member {
   Member.fromJson(core.Map json) {
     if (json.containsKey("email")) {
       email = json["email"];
+    }
+    if (json.containsKey("etag")) {
+      etag = json["etag"];
     }
     if (json.containsKey("id")) {
       id = json["id"];
@@ -524,6 +593,9 @@ class Member {
     if (email != null) {
       output["email"] = email;
     }
+    if (etag != null) {
+      output["etag"] = etag;
+    }
     if (id != null) {
       output["id"] = id;
     }
@@ -541,12 +613,15 @@ class Member {
   }
 
   /** Return String representation of Member */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
 /** JSON response template for List Members operation in Apps Directory API. */
 class Members {
+
+  /** ETag of the resource. */
+  core.String etag;
 
   /** Kind of resource this is. */
   core.String kind;
@@ -559,6 +634,9 @@ class Members {
 
   /** Create new Members from JSON data */
   Members.fromJson(core.Map json) {
+    if (json.containsKey("etag")) {
+      etag = json["etag"];
+    }
     if (json.containsKey("kind")) {
       kind = json["kind"];
     }
@@ -574,6 +652,9 @@ class Members {
   core.Map toJson() {
     var output = new core.Map();
 
+    if (etag != null) {
+      output["etag"] = etag;
+    }
     if (kind != null) {
       output["kind"] = kind;
     }
@@ -588,7 +669,7 @@ class Members {
   }
 
   /** Return String representation of Members */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -603,6 +684,9 @@ class MobileDevice {
 
   /** List of owner user's email addresses (Read-only) */
   core.List<core.String> email;
+
+  /** ETag of the resource. */
+  core.String etag;
 
   /** Date and time the device was first synchronized with the policy settings in the Google Apps administrator control panel (Read-only) */
   core.String firstSync;
@@ -647,6 +731,9 @@ class MobileDevice {
     }
     if (json.containsKey("email")) {
       email = json["email"].toList();
+    }
+    if (json.containsKey("etag")) {
+      etag = json["etag"];
     }
     if (json.containsKey("firstSync")) {
       firstSync = json["firstSync"];
@@ -696,6 +783,9 @@ class MobileDevice {
     if (email != null) {
       output["email"] = email.toList();
     }
+    if (etag != null) {
+      output["etag"] = etag;
+    }
     if (firstSync != null) {
       output["firstSync"] = firstSync;
     }
@@ -734,7 +824,7 @@ class MobileDevice {
   }
 
   /** Return String representation of MobileDevice */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -798,7 +888,7 @@ class MobileDeviceApplications {
   }
 
   /** Return String representation of MobileDeviceApplications */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -827,12 +917,15 @@ class MobileDeviceAction {
   }
 
   /** Return String representation of MobileDeviceAction */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
 /** JSON response template for List Mobile Devices operation in Apps Directory API. */
 class MobileDevices {
+
+  /** ETag of the resource. */
+  core.String etag;
 
   /** Kind of resource this is. */
   core.String kind;
@@ -845,6 +938,9 @@ class MobileDevices {
 
   /** Create new MobileDevices from JSON data */
   MobileDevices.fromJson(core.Map json) {
+    if (json.containsKey("etag")) {
+      etag = json["etag"];
+    }
     if (json.containsKey("kind")) {
       kind = json["kind"];
     }
@@ -860,6 +956,9 @@ class MobileDevices {
   core.Map toJson() {
     var output = new core.Map();
 
+    if (etag != null) {
+      output["etag"] = etag;
+    }
     if (kind != null) {
       output["kind"] = kind;
     }
@@ -874,7 +973,7 @@ class MobileDevices {
   }
 
   /** Return String representation of MobileDevices */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -886,6 +985,9 @@ class OrgUnit {
 
   /** Description of OrgUnit */
   core.String description;
+
+  /** ETag of the resource. */
+  core.String etag;
 
   /** Kind of resource this is. */
   core.String kind;
@@ -906,6 +1008,9 @@ class OrgUnit {
     }
     if (json.containsKey("description")) {
       description = json["description"];
+    }
+    if (json.containsKey("etag")) {
+      etag = json["etag"];
     }
     if (json.containsKey("kind")) {
       kind = json["kind"];
@@ -931,6 +1036,9 @@ class OrgUnit {
     if (description != null) {
       output["description"] = description;
     }
+    if (etag != null) {
+      output["etag"] = etag;
+    }
     if (kind != null) {
       output["kind"] = kind;
     }
@@ -948,12 +1056,15 @@ class OrgUnit {
   }
 
   /** Return String representation of OrgUnit */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
 /** JSON response template for List Organization Units operation in Apps Directory API. */
 class OrgUnits {
+
+  /** ETag of the resource. */
+  core.String etag;
 
   /** Kind of resource this is. */
   core.String kind;
@@ -963,6 +1074,9 @@ class OrgUnits {
 
   /** Create new OrgUnits from JSON data */
   OrgUnits.fromJson(core.Map json) {
+    if (json.containsKey("etag")) {
+      etag = json["etag"];
+    }
     if (json.containsKey("kind")) {
       kind = json["kind"];
     }
@@ -975,6 +1089,9 @@ class OrgUnits {
   core.Map toJson() {
     var output = new core.Map();
 
+    if (etag != null) {
+      output["etag"] = etag;
+    }
     if (kind != null) {
       output["kind"] = kind;
     }
@@ -986,7 +1103,7 @@ class OrgUnits {
   }
 
   /** Return String representation of OrgUnits */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -1015,6 +1132,9 @@ class User {
 
   /** Emails of User */
   core.List<UserEmail> emails;
+
+  /** ETag of the resource. */
+  core.String etag;
 
   /** The external Ids of User * */
   core.List<UserExternalId> externalIds;
@@ -1107,6 +1227,9 @@ class User {
     }
     if (json.containsKey("emails")) {
       emails = json["emails"].map((emailsItem) => new UserEmail.fromJson(emailsItem)).toList();
+    }
+    if (json.containsKey("etag")) {
+      etag = json["etag"];
     }
     if (json.containsKey("externalIds")) {
       externalIds = json["externalIds"].map((externalIdsItem) => new UserExternalId.fromJson(externalIdsItem)).toList();
@@ -1204,6 +1327,9 @@ class User {
     if (emails != null) {
       output["emails"] = emails.map((emailsItem) => emailsItem.toJson()).toList();
     }
+    if (etag != null) {
+      output["etag"] = etag;
+    }
     if (externalIds != null) {
       output["externalIds"] = externalIds.map((externalIdsItem) => externalIdsItem.toJson()).toList();
     }
@@ -1275,7 +1401,7 @@ class User {
   }
 
   /** Return String representation of User */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -1412,7 +1538,7 @@ class UserAddress {
   }
 
   /** Return String representation of UserAddress */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -1468,7 +1594,7 @@ class UserEmail {
   }
 
   /** Return String representation of UserEmail */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -1515,7 +1641,7 @@ class UserExternalId {
   }
 
   /** Return String representation of UserExternalId */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -1589,7 +1715,7 @@ class UserIm {
   }
 
   /** Return String representation of UserIm */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -1618,7 +1744,7 @@ class UserMakeAdmin {
   }
 
   /** Return String representation of UserMakeAdmin */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -1665,7 +1791,7 @@ class UserName {
   }
 
   /** Return String representation of UserName */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -1784,7 +1910,7 @@ class UserOrganization {
   }
 
   /** Return String representation of UserOrganization */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -1840,12 +1966,15 @@ class UserPhone {
   }
 
   /** Return String representation of UserPhone */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
 /** JSON template for Photo object in Apps Directory API. */
 class UserPhoto {
+
+  /** ETag of the resource. */
+  core.String etag;
 
   /** Height in pixels of the photo */
   core.int height;
@@ -1870,6 +1999,9 @@ class UserPhoto {
 
   /** Create new UserPhoto from JSON data */
   UserPhoto.fromJson(core.Map json) {
+    if (json.containsKey("etag")) {
+      etag = json["etag"];
+    }
     if (json.containsKey("height")) {
       height = json["height"];
     }
@@ -1897,6 +2029,9 @@ class UserPhoto {
   core.Map toJson() {
     var output = new core.Map();
 
+    if (etag != null) {
+      output["etag"] = etag;
+    }
     if (height != null) {
       output["height"] = height;
     }
@@ -1923,7 +2058,7 @@ class UserPhoto {
   }
 
   /** Return String representation of UserPhoto */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -1970,7 +2105,7 @@ class UserRelation {
   }
 
   /** Return String representation of UserRelation */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -1999,12 +2134,15 @@ class UserUndelete {
   }
 
   /** Return String representation of UserUndelete */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
 /** JSON response template for List Users operation in Apps Directory API. */
 class Users {
+
+  /** ETag of the resource. */
+  core.String etag;
 
   /** Kind of resource this is. */
   core.String kind;
@@ -2020,6 +2158,9 @@ class Users {
 
   /** Create new Users from JSON data */
   Users.fromJson(core.Map json) {
+    if (json.containsKey("etag")) {
+      etag = json["etag"];
+    }
     if (json.containsKey("kind")) {
       kind = json["kind"];
     }
@@ -2038,6 +2179,9 @@ class Users {
   core.Map toJson() {
     var output = new core.Map();
 
+    if (etag != null) {
+      output["etag"] = etag;
+    }
     if (kind != null) {
       output["kind"] = kind;
     }
@@ -2055,7 +2199,7 @@ class Users {
   }
 
   /** Return String representation of Users */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
