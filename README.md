@@ -6,7 +6,7 @@ Auto-generated client library for accessing the admin directory_v1 API.
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Admin Directory API - admin directory_v1
 
-Apps Directory API lets you view and manage enterprise resources like user, groups, OrgUnit, devices.
+Apps Directory API lets you view and manage enterprise resources like user, groups, OrgUnit, devices, tokens, asps, verification codes.
 
 Official API documentation: https://developers.google.com/admin-sdk/directory/
 
@@ -14,7 +14,7 @@ Adding dependency to pubspec.yaml
 
 ```
   dependencies:
-    google_admin_directory_v1_api: '>=0.4.4'
+    google_admin_directory_v1_api: '>=0.4.5'
 ```
 
 For web applications:
@@ -29,13 +29,13 @@ For console application:
   import "package:google_admin_directory_v1_api/admin_directory_v1_api_console.dart" as adminclient;
 ```
 
-Working with out authentication the following constructor can be called:
+Working without authentication the following constructor can be called:
 
 ```
   var admin = new adminclient.Admin();
 ```
 
-Working with authentication then create a new `GoogleOAuth2` object and pass it to the constructor:
+To use authentication create a new `GoogleOAuth2` object and pass it to the constructor:
 
 
 ```

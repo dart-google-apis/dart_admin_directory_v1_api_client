@@ -8,12 +8,16 @@ abstract class Client extends ClientBase {
   // Resources
   //
 
+  AspsResource_ get asps => new AspsResource_(this);
   ChromeosdevicesResource_ get chromeosdevices => new ChromeosdevicesResource_(this);
   GroupsResource_ get groups => new GroupsResource_(this);
   MembersResource_ get members => new MembersResource_(this);
   MobiledevicesResource_ get mobiledevices => new MobiledevicesResource_(this);
+  NotificationsResource_ get notifications => new NotificationsResource_(this);
   OrgunitsResource_ get orgunits => new OrgunitsResource_(this);
+  TokensResource_ get tokens => new TokensResource_(this);
   UsersResource_ get users => new UsersResource_(this);
+  VerificationCodesResource_ get verificationCodes => new VerificationCodesResource_(this);
 
   //
   // Parameters

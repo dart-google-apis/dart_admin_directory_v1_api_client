@@ -112,6 +112,135 @@ class Aliases {
 
 }
 
+/** The template that returns individual ASP (Access Code) data. */
+class Asp {
+
+  /** Code Id of the Access code. */
+  core.int codeId;
+
+  /** Time when the ASP was created. */
+  core.int creationTime;
+
+  /** ETag of the resource. */
+  core.String etag;
+
+  /** The type of the resource. */
+  core.String kind;
+
+  /** Time when the ASP was last used. */
+  core.int lastTimeUsed;
+
+  /** Name of the application. */
+  core.String name;
+
+  /** User who has issued the ASP. */
+  core.String userKey;
+
+  /** Create new Asp from JSON data */
+  Asp.fromJson(core.Map json) {
+    if (json.containsKey("codeId")) {
+      codeId = json["codeId"];
+    }
+    if (json.containsKey("creationTime")) {
+      creationTime = (json["creationTime"] is core.String) ? core.int.parse(json["creationTime"]) : json["creationTime"];
+    }
+    if (json.containsKey("etag")) {
+      etag = json["etag"];
+    }
+    if (json.containsKey("kind")) {
+      kind = json["kind"];
+    }
+    if (json.containsKey("lastTimeUsed")) {
+      lastTimeUsed = (json["lastTimeUsed"] is core.String) ? core.int.parse(json["lastTimeUsed"]) : json["lastTimeUsed"];
+    }
+    if (json.containsKey("name")) {
+      name = json["name"];
+    }
+    if (json.containsKey("userKey")) {
+      userKey = json["userKey"];
+    }
+  }
+
+  /** Create JSON Object for Asp */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (codeId != null) {
+      output["codeId"] = codeId;
+    }
+    if (creationTime != null) {
+      output["creationTime"] = creationTime;
+    }
+    if (etag != null) {
+      output["etag"] = etag;
+    }
+    if (kind != null) {
+      output["kind"] = kind;
+    }
+    if (lastTimeUsed != null) {
+      output["lastTimeUsed"] = lastTimeUsed;
+    }
+    if (name != null) {
+      output["name"] = name;
+    }
+    if (userKey != null) {
+      output["userKey"] = userKey;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of Asp */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class Asps {
+
+  /** ETag of the resource. */
+  core.String etag;
+
+  /** Asps resource. */
+  core.List<Asp> items;
+
+  /** The type of the resource. */
+  core.String kind;
+
+  /** Create new Asps from JSON data */
+  Asps.fromJson(core.Map json) {
+    if (json.containsKey("etag")) {
+      etag = json["etag"];
+    }
+    if (json.containsKey("items")) {
+      items = json["items"].map((itemsItem) => new Asp.fromJson(itemsItem)).toList();
+    }
+    if (json.containsKey("kind")) {
+      kind = json["kind"];
+    }
+  }
+
+  /** Create JSON Object for Asps */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (etag != null) {
+      output["etag"] = etag;
+    }
+    if (items != null) {
+      output["items"] = items.map((itemsItem) => itemsItem.toJson()).toList();
+    }
+    if (kind != null) {
+      output["kind"] = kind;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of Asps */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
 /** JSON template for Chrome Os Device resource in Apps Directory API. */
 class ChromeOsDevice {
 
@@ -977,6 +1106,162 @@ class MobileDevices {
 
 }
 
+/** Template for a notification resource. */
+class Notification {
+
+  /** Body of the notification (Read-only) */
+  core.String body;
+
+  /** ETag of the resource. */
+  core.String etag;
+
+  /** Address from which the notification is received (Read-only) */
+  core.String fromAddress;
+
+  /** Boolean indicating whether the notification is unread or not. */
+  core.bool isUnread;
+
+  /** The type of the resource. */
+  core.String kind;
+
+  core.String notificationId;
+
+  /** Time at which notification was sent (Read-only) */
+  core.String sendTime;
+
+  /** Subject of the notification (Read-only) */
+  core.String subject;
+
+  /** Create new Notification from JSON data */
+  Notification.fromJson(core.Map json) {
+    if (json.containsKey("body")) {
+      body = json["body"];
+    }
+    if (json.containsKey("etag")) {
+      etag = json["etag"];
+    }
+    if (json.containsKey("fromAddress")) {
+      fromAddress = json["fromAddress"];
+    }
+    if (json.containsKey("isUnread")) {
+      isUnread = json["isUnread"];
+    }
+    if (json.containsKey("kind")) {
+      kind = json["kind"];
+    }
+    if (json.containsKey("notificationId")) {
+      notificationId = json["notificationId"];
+    }
+    if (json.containsKey("sendTime")) {
+      sendTime = json["sendTime"];
+    }
+    if (json.containsKey("subject")) {
+      subject = json["subject"];
+    }
+  }
+
+  /** Create JSON Object for Notification */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (body != null) {
+      output["body"] = body;
+    }
+    if (etag != null) {
+      output["etag"] = etag;
+    }
+    if (fromAddress != null) {
+      output["fromAddress"] = fromAddress;
+    }
+    if (isUnread != null) {
+      output["isUnread"] = isUnread;
+    }
+    if (kind != null) {
+      output["kind"] = kind;
+    }
+    if (notificationId != null) {
+      output["notificationId"] = notificationId;
+    }
+    if (sendTime != null) {
+      output["sendTime"] = sendTime;
+    }
+    if (subject != null) {
+      output["subject"] = subject;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of Notification */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+/** Template for notifications list response. */
+class Notifications {
+
+  /** ETag of the resource. */
+  core.String etag;
+
+  /** List of notifications in this page. */
+  core.List<Notification> items;
+
+  /** The type of the resource. */
+  core.String kind;
+
+  /** Token for fetching the next page of notifications. */
+  core.String nextPageToken;
+
+  /** Number of unread notification for the domain. */
+  core.int unreadNotificationsCount;
+
+  /** Create new Notifications from JSON data */
+  Notifications.fromJson(core.Map json) {
+    if (json.containsKey("etag")) {
+      etag = json["etag"];
+    }
+    if (json.containsKey("items")) {
+      items = json["items"].map((itemsItem) => new Notification.fromJson(itemsItem)).toList();
+    }
+    if (json.containsKey("kind")) {
+      kind = json["kind"];
+    }
+    if (json.containsKey("nextPageToken")) {
+      nextPageToken = json["nextPageToken"];
+    }
+    if (json.containsKey("unreadNotificationsCount")) {
+      unreadNotificationsCount = json["unreadNotificationsCount"];
+    }
+  }
+
+  /** Create JSON Object for Notifications */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (etag != null) {
+      output["etag"] = etag;
+    }
+    if (items != null) {
+      output["items"] = items.map((itemsItem) => itemsItem.toJson()).toList();
+    }
+    if (kind != null) {
+      output["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      output["nextPageToken"] = nextPageToken;
+    }
+    if (unreadNotificationsCount != null) {
+      output["unreadNotificationsCount"] = unreadNotificationsCount;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of Notifications */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
 /** JSON template for Org Unit resource in Apps Directory API. */
 class OrgUnit {
 
@@ -1103,6 +1388,145 @@ class OrgUnits {
   }
 
   /** Return String representation of OrgUnits */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+/** JSON template for token resource in Apps Directory API. */
+class Token {
+
+  /** Is the token anonymous? */
+  core.bool anonymous;
+
+  /** Domain to which the token is issued. */
+  core.String clientId;
+
+  /** Displayable name of Domain to which the token is issued. */
+  core.String displayText;
+
+  /** ETag of the resource. */
+  core.String etag;
+
+  /** The type of the resource. */
+  core.String kind;
+
+  /** Is the token for native app? */
+  core.bool nativeApp;
+
+  /** List of scopes. */
+  core.List<core.String> scopes;
+
+  /** Obfuscated user_id of the user who has issued the token. */
+  core.String userKey;
+
+  /** Create new Token from JSON data */
+  Token.fromJson(core.Map json) {
+    if (json.containsKey("anonymous")) {
+      anonymous = json["anonymous"];
+    }
+    if (json.containsKey("clientId")) {
+      clientId = json["clientId"];
+    }
+    if (json.containsKey("displayText")) {
+      displayText = json["displayText"];
+    }
+    if (json.containsKey("etag")) {
+      etag = json["etag"];
+    }
+    if (json.containsKey("kind")) {
+      kind = json["kind"];
+    }
+    if (json.containsKey("nativeApp")) {
+      nativeApp = json["nativeApp"];
+    }
+    if (json.containsKey("scopes")) {
+      scopes = json["scopes"].toList();
+    }
+    if (json.containsKey("userKey")) {
+      userKey = json["userKey"];
+    }
+  }
+
+  /** Create JSON Object for Token */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (anonymous != null) {
+      output["anonymous"] = anonymous;
+    }
+    if (clientId != null) {
+      output["clientId"] = clientId;
+    }
+    if (displayText != null) {
+      output["displayText"] = displayText;
+    }
+    if (etag != null) {
+      output["etag"] = etag;
+    }
+    if (kind != null) {
+      output["kind"] = kind;
+    }
+    if (nativeApp != null) {
+      output["nativeApp"] = nativeApp;
+    }
+    if (scopes != null) {
+      output["scopes"] = scopes.toList();
+    }
+    if (userKey != null) {
+      output["userKey"] = userKey;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of Token */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+/** JSON response template for List tokens operation in Apps Directory API. */
+class Tokens {
+
+  /** ETag of the resource. */
+  core.String etag;
+
+  /** Tokens resource. */
+  core.List<Token> items;
+
+  /** The type of the resource. */
+  core.String kind;
+
+  /** Create new Tokens from JSON data */
+  Tokens.fromJson(core.Map json) {
+    if (json.containsKey("etag")) {
+      etag = json["etag"];
+    }
+    if (json.containsKey("items")) {
+      items = json["items"].map((itemsItem) => new Token.fromJson(itemsItem)).toList();
+    }
+    if (json.containsKey("kind")) {
+      kind = json["kind"];
+    }
+  }
+
+  /** Create JSON Object for Tokens */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (etag != null) {
+      output["etag"] = etag;
+    }
+    if (items != null) {
+      output["items"] = items.map((itemsItem) => itemsItem.toJson()).toList();
+    }
+    if (kind != null) {
+      output["kind"] = kind;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of Tokens */
   core.String toString() => JSON.encode(this.toJson());
 
 }
@@ -2199,6 +2623,109 @@ class Users {
   }
 
   /** Return String representation of Users */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+/** JSON template for verification codes in Apps Directory API. */
+class VerificationCode {
+
+  /** ETag of the resource. */
+  core.String etag;
+
+  /** The type of the resource. */
+  core.String kind;
+
+  /** Obfuscated user_id of the account holder. */
+  core.String userId;
+
+  /** A verification code for that user */
+  core.String verificationCode;
+
+  /** Create new VerificationCode from JSON data */
+  VerificationCode.fromJson(core.Map json) {
+    if (json.containsKey("etag")) {
+      etag = json["etag"];
+    }
+    if (json.containsKey("kind")) {
+      kind = json["kind"];
+    }
+    if (json.containsKey("userId")) {
+      userId = json["userId"];
+    }
+    if (json.containsKey("verificationCode")) {
+      verificationCode = json["verificationCode"];
+    }
+  }
+
+  /** Create JSON Object for VerificationCode */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (etag != null) {
+      output["etag"] = etag;
+    }
+    if (kind != null) {
+      output["kind"] = kind;
+    }
+    if (userId != null) {
+      output["userId"] = userId;
+    }
+    if (verificationCode != null) {
+      output["verificationCode"] = verificationCode;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of VerificationCode */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+/** JSON response template for List verification codes operation in Apps Directory API. */
+class VerificationCodes {
+
+  /** ETag of the resource. */
+  core.String etag;
+
+  /** verification codes resource. */
+  core.List<VerificationCode> items;
+
+  /** The type of the resource. */
+  core.String kind;
+
+  /** Create new VerificationCodes from JSON data */
+  VerificationCodes.fromJson(core.Map json) {
+    if (json.containsKey("etag")) {
+      etag = json["etag"];
+    }
+    if (json.containsKey("items")) {
+      items = json["items"].map((itemsItem) => new VerificationCode.fromJson(itemsItem)).toList();
+    }
+    if (json.containsKey("kind")) {
+      kind = json["kind"];
+    }
+  }
+
+  /** Create JSON Object for VerificationCodes */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (etag != null) {
+      output["etag"] = etag;
+    }
+    if (items != null) {
+      output["items"] = items.map((itemsItem) => itemsItem.toJson()).toList();
+    }
+    if (kind != null) {
+      output["kind"] = kind;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of VerificationCodes */
   core.String toString() => JSON.encode(this.toJson());
 
 }

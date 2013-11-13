@@ -5,7 +5,7 @@ import "package:google_oauth2_client/google_oauth2_browser.dart" as oauth;
 import 'package:google_admin_directory_v1_api/src/browser_client.dart';
 import "package:google_admin_directory_v1_api/admin_directory_v1_api_client.dart";
 
-/** Apps Directory API lets you view and manage enterprise resources like user, groups, OrgUnit, devices. */
+/** Apps Directory API lets you view and manage enterprise resources like user, groups, OrgUnit, devices, tokens, asps, verification codes. */
 class Admin extends Client with BrowserClient {
 
   /** OAuth Scope2: View and manage your Chrome OS devices' metadata */
@@ -35,6 +35,9 @@ class Admin extends Client with BrowserClient {
   /** OAuth Scope2: View groups on your domain */
   static const String ADMIN_DIRECTORY_GROUP_READONLY_SCOPE = "https://www.googleapis.com/auth/admin.directory.group.readonly";
 
+  /** OAuth Scope2: View and manage notifications received on your domain */
+  static const String ADMIN_DIRECTORY_NOTIFICATIONS_SCOPE = "https://www.googleapis.com/auth/admin.directory.notifications";
+
   /** OAuth Scope2: View and manage organization units on your domain */
   static const String ADMIN_DIRECTORY_ORGUNIT_SCOPE = "https://www.googleapis.com/auth/admin.directory.orgunit";
 
@@ -52,6 +55,9 @@ class Admin extends Client with BrowserClient {
 
   /** OAuth Scope2: View users on your domain */
   static const String ADMIN_DIRECTORY_USER_READONLY_SCOPE = "https://www.googleapis.com/auth/admin.directory.user.readonly";
+
+  /** OAuth Scope2: Manage data access permissions for users on your domain */
+  static const String ADMIN_DIRECTORY_USER_SECURITY_SCOPE = "https://www.googleapis.com/auth/admin.directory.user.security";
 
   final oauth.OAuth2 auth;
 

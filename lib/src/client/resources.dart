@@ -1,5 +1,119 @@
 part of admin_directory_v1_api;
 
+class AspsResource_ {
+
+  final Client _client;
+
+  AspsResource_(Client client) :
+      _client = client;
+
+  /**
+   * Delete the application specific password issued by the user for a codeId.
+   *
+   * [userKey] - Email or immutable Id of the user
+   *
+   * [codeId] - The codeId.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<core.Map> delete(core.String userKey, core.int codeId, {core.Map optParams}) {
+    var url = "users/{userKey}/asps/{codeId}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (codeId == null) paramErrors.add("codeId is required");
+    if (codeId != null) urlParams["codeId"] = codeId;
+    if (userKey == null) paramErrors.add("userKey is required");
+    if (userKey != null) urlParams["userKey"] = userKey;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "DELETE", urlParams: urlParams, queryParams: queryParams);
+    return response;
+  }
+
+  /**
+   * Get the application specific password issued by the user for a codeId.
+   *
+   * [userKey] - Email or immutable Id of the user
+   *
+   * [codeId] - The codeid.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<Asp> get(core.String userKey, core.int codeId, {core.Map optParams}) {
+    var url = "users/{userKey}/asps/{codeId}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (codeId == null) paramErrors.add("codeId is required");
+    if (codeId != null) urlParams["codeId"] = codeId;
+    if (userKey == null) paramErrors.add("userKey is required");
+    if (userKey != null) urlParams["userKey"] = userKey;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new Asp.fromJson(data));
+  }
+
+  /**
+   * List the application specific passwords issued by the user.
+   *
+   * [userKey] - Email or immutable Id of the user
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<Asps> list(core.String userKey, {core.Map optParams}) {
+    var url = "users/{userKey}/asps";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (userKey == null) paramErrors.add("userKey is required");
+    if (userKey != null) urlParams["userKey"] = userKey;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new Asps.fromJson(data));
+  }
+}
+
 class ChromeosdevicesResource_ {
 
   final Client _client;
@@ -1000,6 +1114,207 @@ class MobiledevicesResource_ {
   }
 }
 
+class NotificationsResource_ {
+
+  final Client _client;
+
+  NotificationsResource_(Client client) :
+      _client = client;
+
+  /**
+   * Deletes a notification
+   *
+   * [customer] - Obfuscated customer ID of the domain for which notification is to be deleted
+   *
+   * [notificationId] - Id of the notification to be deleted.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<core.Map> delete(core.String customer, core.String notificationId, {core.Map optParams}) {
+    var url = "customer/{customer}/notifications/{notificationId}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (customer == null) paramErrors.add("customer is required");
+    if (customer != null) urlParams["customer"] = customer;
+    if (notificationId == null) paramErrors.add("notificationId is required");
+    if (notificationId != null) urlParams["notificationId"] = notificationId;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "DELETE", urlParams: urlParams, queryParams: queryParams);
+    return response;
+  }
+
+  /**
+   * Retrieves a notification
+   *
+   * [customer] - Obfuscated customer ID of the domain for which notification is to be retrieved
+   *
+   * [notificationId] - Id of the notification to be retrieved.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<Notification> get(core.String customer, core.String notificationId, {core.Map optParams}) {
+    var url = "customer/{customer}/notifications/{notificationId}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (customer == null) paramErrors.add("customer is required");
+    if (customer != null) urlParams["customer"] = customer;
+    if (notificationId == null) paramErrors.add("notificationId is required");
+    if (notificationId != null) urlParams["notificationId"] = notificationId;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new Notification.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of notifications.
+   *
+   * [customer] - Obfuscated customer ID of the domain for which notifications are to be retrieved
+   *
+   * [language] - Code of the language in which the notifications are to be retrieved. Notifications will be returned in English by default
+   *
+   * [maxResults] - Number of notifications to be retrieved. Default is 100
+   *
+   * [pageToken] - Token for the page to be retrieved
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<Notifications> list(core.String customer, {core.String language, core.int maxResults, core.String pageToken, core.Map optParams}) {
+    var url = "customer/{customer}/notifications";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (customer == null) paramErrors.add("customer is required");
+    if (customer != null) urlParams["customer"] = customer;
+    if (language != null) queryParams["language"] = language;
+    if (maxResults != null) queryParams["maxResults"] = maxResults;
+    if (pageToken != null) queryParams["pageToken"] = pageToken;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new Notifications.fromJson(data));
+  }
+
+  /**
+   * Updates a notification. This method supports patch semantics.
+   *
+   * [request] - Notification to send in this request
+   *
+   * [customer] - Obfuscated customer ID of the domain for which notification is to be updated
+   *
+   * [notificationId] - Id of the notification to be updated.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<Notification> patch(Notification request, core.String customer, core.String notificationId, {core.Map optParams}) {
+    var url = "customer/{customer}/notifications/{notificationId}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (customer == null) paramErrors.add("customer is required");
+    if (customer != null) urlParams["customer"] = customer;
+    if (notificationId == null) paramErrors.add("notificationId is required");
+    if (notificationId != null) urlParams["notificationId"] = notificationId;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "PATCH", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new Notification.fromJson(data));
+  }
+
+  /**
+   * Updates a notification
+   *
+   * [request] - Notification to send in this request
+   *
+   * [customer] - Obfuscated customer ID of the domain for which notification is to be updated
+   *
+   * [notificationId] - Id of the notification to be updated.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<Notification> update(Notification request, core.String customer, core.String notificationId, {core.Map optParams}) {
+    var url = "customer/{customer}/notifications/{notificationId}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (customer == null) paramErrors.add("customer is required");
+    if (customer != null) urlParams["customer"] = customer;
+    if (notificationId == null) paramErrors.add("notificationId is required");
+    if (notificationId != null) urlParams["notificationId"] = notificationId;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "PUT", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new Notification.fromJson(data));
+  }
+}
+
 class OrgunitsResource_ {
 
   final Client _client;
@@ -1241,6 +1556,120 @@ class OrgunitsResource_ {
     response = _client.request(url, "PUT", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
     return response
       .then((data) => new OrgUnit.fromJson(data));
+  }
+}
+
+class TokensResource_ {
+
+  final Client _client;
+
+  TokensResource_(Client client) :
+      _client = client;
+
+  /**
+   * Delete all OAuth tokens issued by the user for an app domain.
+   *
+   * [userKey] - Email or immutable Id of the user
+   *
+   * [clientId] - The app domain.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<core.Map> delete(core.String userKey, core.String clientId, {core.Map optParams}) {
+    var url = "users/{userKey}/tokens/{clientId}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (clientId == null) paramErrors.add("clientId is required");
+    if (clientId != null) urlParams["clientId"] = clientId;
+    if (userKey == null) paramErrors.add("userKey is required");
+    if (userKey != null) urlParams["userKey"] = userKey;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "DELETE", urlParams: urlParams, queryParams: queryParams);
+    return response;
+  }
+
+  /**
+   * Get the OAuth token issued by the user for an app domain.
+   *
+   * [userKey] - Email or immutable Id of the user
+   *
+   * [clientId] - The app domain.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<Token> get(core.String userKey, core.String clientId, {core.Map optParams}) {
+    var url = "users/{userKey}/tokens/{clientId}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (clientId == null) paramErrors.add("clientId is required");
+    if (clientId != null) urlParams["clientId"] = clientId;
+    if (userKey == null) paramErrors.add("userKey is required");
+    if (userKey != null) urlParams["userKey"] = userKey;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new Token.fromJson(data));
+  }
+
+  /**
+   * List the OAuth tokens issued by the user.
+   *
+   * [userKey] - Email or immutable Id of the user
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<Tokens> list(core.String userKey, {core.Map optParams}) {
+    var url = "users/{userKey}/tokens";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (userKey == null) paramErrors.add("userKey is required");
+    if (userKey != null) urlParams["userKey"] = userKey;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new Tokens.fromJson(data));
   }
 }
 
@@ -1811,6 +2240,111 @@ class UsersPhotosResource_ {
     response = _client.request(url, "PUT", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
     return response
       .then((data) => new UserPhoto.fromJson(data));
+  }
+}
+
+class VerificationCodesResource_ {
+
+  final Client _client;
+
+  VerificationCodesResource_(Client client) :
+      _client = client;
+
+  /**
+   * Generate new backup verification codes for the user.
+   *
+   * [userKey] - Email or immutable Id of the user
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<core.Map> generate(core.String userKey, {core.Map optParams}) {
+    var url = "users/{userKey}/verificationCodes/generate";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (userKey == null) paramErrors.add("userKey is required");
+    if (userKey != null) urlParams["userKey"] = userKey;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "POST", urlParams: urlParams, queryParams: queryParams);
+    return response;
+  }
+
+  /**
+   * Invalidate the backup verification codes for the user.
+   *
+   * [userKey] - Email or immutable Id of the user
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<core.Map> invalidate(core.String userKey, {core.Map optParams}) {
+    var url = "users/{userKey}/verificationCodes/invalidate";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (userKey == null) paramErrors.add("userKey is required");
+    if (userKey != null) urlParams["userKey"] = userKey;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "POST", urlParams: urlParams, queryParams: queryParams);
+    return response;
+  }
+
+  /**
+   * List the backup verification codes for the user.
+   *
+   * [userKey] - Email or immutable Id of the user
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<VerificationCodes> list(core.String userKey, {core.Map optParams}) {
+    var url = "users/{userKey}/verificationCodes";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (userKey == null) paramErrors.add("userKey is required");
+    if (userKey != null) urlParams["userKey"] = userKey;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new VerificationCodes.fromJson(data));
   }
 }
 
