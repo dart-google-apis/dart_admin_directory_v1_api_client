@@ -115,25 +115,25 @@ class Aliases {
 /** The template that returns individual ASP (Access Code) data. */
 class Asp {
 
-  /** Code Id of the Access code. */
+  /** The unique ID of the ASP. */
   core.int codeId;
 
-  /** Time when the ASP was created. */
+  /** The time when the ASP was created. Expressed in Unix time format. */
   core.int creationTime;
 
-  /** ETag of the resource. */
+  /** ETag of the ASP. */
   core.String etag;
 
-  /** The type of the resource. */
+  /** The type of the API resource. This is always admin#directory#asp. */
   core.String kind;
 
-  /** Time when the ASP was last used. */
+  /** The time when the ASP was last used. Expressed in Unix time format. */
   core.int lastTimeUsed;
 
-  /** Name of the application. */
+  /** The name of the application that the user, represented by their userId, entered when the ASP was created. */
   core.String name;
 
-  /** User who has issued the ASP. */
+  /** The unique ID of the user who issued the ASP. */
   core.String userKey;
 
   /** Create new Asp from JSON data */
@@ -200,10 +200,10 @@ class Asps {
   /** ETag of the resource. */
   core.String etag;
 
-  /** Asps resource. */
+  /** A list of ASP resources. */
   core.List<Asp> items;
 
-  /** The type of the resource. */
+  /** The type of the API resource. This is always admin#directory#aspList. */
   core.String kind;
 
   /** Create new Asps from JSON data */
@@ -237,6 +237,116 @@ class Asps {
   }
 
   /** Return String representation of Asps */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+/** An notification channel used to watch for resource changes. */
+class Channel {
+
+  /** The address where notifications are delivered for this channel. */
+  core.String address;
+
+  /** Date and time of notification channel expiration, expressed as a Unix timestamp, in milliseconds. Optional. */
+  core.int expiration;
+
+  /** A UUID or similar unique string that identifies this channel. */
+  core.String id;
+
+  /** Identifies this as a notification channel used to watch for changes to a resource. Value: the fixed string "api#channel". */
+  core.String kind;
+
+  /** Additional parameters controlling delivery channel behavior. Optional. */
+  core.Map<core.String, core.String> params;
+
+  /** A Boolean value to indicate whether payload is wanted. Optional. */
+  core.bool payload;
+
+  /** An opaque ID that identifies the resource being watched on this channel. Stable across different API versions. */
+  core.String resourceId;
+
+  /** A version-specific identifier for the watched resource. */
+  core.String resourceUri;
+
+  /** An arbitrary string delivered to the target address with each notification delivered over this channel. Optional. */
+  core.String token;
+
+  /** The type of delivery mechanism used for this channel. */
+  core.String type;
+
+  /** Create new Channel from JSON data */
+  Channel.fromJson(core.Map json) {
+    if (json.containsKey("address")) {
+      address = json["address"];
+    }
+    if (json.containsKey("expiration")) {
+      expiration = (json["expiration"] is core.String) ? core.int.parse(json["expiration"]) : json["expiration"];
+    }
+    if (json.containsKey("id")) {
+      id = json["id"];
+    }
+    if (json.containsKey("kind")) {
+      kind = json["kind"];
+    }
+    if (json.containsKey("params")) {
+      params = _mapMap(json["params"]);
+    }
+    if (json.containsKey("payload")) {
+      payload = json["payload"];
+    }
+    if (json.containsKey("resourceId")) {
+      resourceId = json["resourceId"];
+    }
+    if (json.containsKey("resourceUri")) {
+      resourceUri = json["resourceUri"];
+    }
+    if (json.containsKey("token")) {
+      token = json["token"];
+    }
+    if (json.containsKey("type")) {
+      type = json["type"];
+    }
+  }
+
+  /** Create JSON Object for Channel */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (address != null) {
+      output["address"] = address;
+    }
+    if (expiration != null) {
+      output["expiration"] = expiration;
+    }
+    if (id != null) {
+      output["id"] = id;
+    }
+    if (kind != null) {
+      output["kind"] = kind;
+    }
+    if (params != null) {
+      output["params"] = _mapMap(params);
+    }
+    if (payload != null) {
+      output["payload"] = payload;
+    }
+    if (resourceId != null) {
+      output["resourceId"] = resourceId;
+    }
+    if (resourceUri != null) {
+      output["resourceUri"] = resourceUri;
+    }
+    if (token != null) {
+      output["token"] = token;
+    }
+    if (type != null) {
+      output["type"] = type;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of Channel */
   core.String toString() => JSON.encode(this.toJson());
 
 }
@@ -1395,28 +1505,28 @@ class OrgUnits {
 /** JSON template for token resource in Apps Directory API. */
 class Token {
 
-  /** Is the token anonymous? */
+  /** Whether the application is registered with Google. The value is true if the application has an anonymous Client ID. */
   core.bool anonymous;
 
-  /** Domain to which the token is issued. */
+  /** The Client ID of the application the token is issued to. */
   core.String clientId;
 
-  /** Displayable name of Domain to which the token is issued. */
+  /** The displayable name of the application the token is issued to. */
   core.String displayText;
 
   /** ETag of the resource. */
   core.String etag;
 
-  /** The type of the resource. */
+  /** The type of the API resource. This is always admin#directory#token. */
   core.String kind;
 
-  /** Is the token for native app? */
+  /** Whether the token is issued to an installed application. The value is true if the application is installed to a desktop or mobile device. */
   core.bool nativeApp;
 
-  /** List of scopes. */
+  /** A list of authorization scopes the application is granted. */
   core.List<core.String> scopes;
 
-  /** Obfuscated user_id of the user who has issued the token. */
+  /** The unique ID of the user that issued the token. */
   core.String userKey;
 
   /** Create new Token from JSON data */
@@ -1490,10 +1600,10 @@ class Tokens {
   /** ETag of the resource. */
   core.String etag;
 
-  /** Tokens resource. */
+  /** A list of Token resources. */
   core.List<Token> items;
 
-  /** The type of the resource. */
+  /** The type of the API resource. This is always admin#directory#tokenList. */
   core.String kind;
 
   /** Create new Tokens from JSON data */
@@ -2633,13 +2743,13 @@ class VerificationCode {
   /** ETag of the resource. */
   core.String etag;
 
-  /** The type of the resource. */
+  /** The type of the resource. This is always admin#directory#verificationCode. */
   core.String kind;
 
-  /** Obfuscated user_id of the account holder. */
+  /** The obfuscated unique ID of the user. */
   core.String userId;
 
-  /** A verification code for that user */
+  /** A current verification code for the user. Invalidated or used verification codes are not returned as part of the result. */
   core.String verificationCode;
 
   /** Create new VerificationCode from JSON data */
@@ -2689,10 +2799,10 @@ class VerificationCodes {
   /** ETag of the resource. */
   core.String etag;
 
-  /** verification codes resource. */
+  /** A list of verification code resources. */
   core.List<VerificationCode> items;
 
-  /** The type of the resource. */
+  /** The type of the resource. This is always admin#directory#verificationCodesList. */
   core.String kind;
 
   /** Create new VerificationCodes from JSON data */

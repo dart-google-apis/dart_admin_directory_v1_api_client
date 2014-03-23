@@ -9,6 +9,7 @@ abstract class Client extends ClientBase {
   //
 
   AspsResource_ get asps => new AspsResource_(this);
+  ChannelsResource_ get channels => new ChannelsResource_(this);
   ChromeosdevicesResource_ get chromeosdevices => new ChromeosdevicesResource_(this);
   GroupsResource_ get groups => new GroupsResource_(this);
   MembersResource_ get members => new MembersResource_(this);

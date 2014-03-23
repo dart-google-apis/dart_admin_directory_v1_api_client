@@ -6,7 +6,7 @@ Auto-generated client library for accessing the admin directory_v1 API.
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Admin Directory API - admin directory_v1
 
-Apps Directory API lets you view and manage enterprise resources like user, groups, OrgUnit, devices, tokens, asps, verification codes.
+The Admin SDK Directory API lets you view and manage enterprise resources such as users and groups, administrative notifications, security features, and more.
 
 Official API documentation: https://developers.google.com/admin-sdk/directory/
 
@@ -14,7 +14,7 @@ Adding dependency to pubspec.yaml
 
 ```
   dependencies:
-    google_admin_directory_v1_api: '>=0.4.5'
+    google_admin_directory_v1_api: '>=0.4.6'
 ```
 
 For web applications:
@@ -46,7 +46,7 @@ To use authentication create a new `GoogleOAuth2` object and pass it to the cons
 ### Licenses
 
 ```
-Copyright (c) 2013 Gerwin Sturm & Adam Singer
+Copyright (c) 2013-2014 Gerwin Sturm & Adam Singer
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may 
 not use this file except in compliance with the License. You may obtain a 

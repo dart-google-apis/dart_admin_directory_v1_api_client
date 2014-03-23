@@ -8,11 +8,11 @@ class AspsResource_ {
       _client = client;
 
   /**
-   * Delete the application specific password issued by the user for a codeId.
+   * Delete an ASP issued by a user.
    *
-   * [userKey] - Email or immutable Id of the user
+   * [userKey] - Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID.
    *
-   * [codeId] - The codeId.
+   * [codeId] - The unique ID of the ASP to be deleted.
    *
    * [optParams] - Additional query parameters
    */
@@ -44,11 +44,11 @@ class AspsResource_ {
   }
 
   /**
-   * Get the application specific password issued by the user for a codeId.
+   * Get information about an ASP issued by a user.
    *
-   * [userKey] - Email or immutable Id of the user
+   * [userKey] - Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID.
    *
-   * [codeId] - The codeid.
+   * [codeId] - The unique ID of the ASP.
    *
    * [optParams] - Additional query parameters
    */
@@ -81,9 +81,9 @@ class AspsResource_ {
   }
 
   /**
-   * List the application specific passwords issued by the user.
+   * List the ASPs issued by a user.
    *
-   * [userKey] - Email or immutable Id of the user
+   * [userKey] - Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID.
    *
    * [optParams] - Additional query parameters
    */
@@ -111,6 +111,44 @@ class AspsResource_ {
     response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
     return response
       .then((data) => new Asps.fromJson(data));
+  }
+}
+
+class ChannelsResource_ {
+
+  final Client _client;
+
+  ChannelsResource_(Client client) :
+      _client = client;
+
+  /**
+   * Stop watching resources through this channel
+   *
+   * [request] - Channel to send in this request
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<core.Map> stop(Channel request, {core.Map optParams}) {
+    var url = "/admin/directory_v1/channels/stop";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "POST", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
+    return response;
   }
 }
 
@@ -1124,9 +1162,9 @@ class NotificationsResource_ {
   /**
    * Deletes a notification
    *
-   * [customer] - Obfuscated customer ID of the domain for which notification is to be deleted
+   * [customer] - The unique ID for the customer's Google account. The customerId is also returned as part of the Users resource.
    *
-   * [notificationId] - Id of the notification to be deleted.
+   * [notificationId] - The unique ID of the notification.
    *
    * [optParams] - Additional query parameters
    */
@@ -1158,11 +1196,11 @@ class NotificationsResource_ {
   }
 
   /**
-   * Retrieves a notification
+   * Retrieves a notification.
    *
-   * [customer] - Obfuscated customer ID of the domain for which notification is to be retrieved
+   * [customer] - The unique ID for the customer's Google account. The customerId is also returned as part of the Users resource.
    *
-   * [notificationId] - Id of the notification to be retrieved.
+   * [notificationId] - The unique ID of the notification.
    *
    * [optParams] - Additional query parameters
    */
@@ -1197,13 +1235,13 @@ class NotificationsResource_ {
   /**
    * Retrieves a list of notifications.
    *
-   * [customer] - Obfuscated customer ID of the domain for which notifications are to be retrieved
+   * [customer] - The unique ID for the customer's Google account.
    *
-   * [language] - Code of the language in which the notifications are to be retrieved. Notifications will be returned in English by default
+   * [language] - The ISO 639-1 code of the language notifications are returned in. The default is English (en).
    *
-   * [maxResults] - Number of notifications to be retrieved. Default is 100
+   * [maxResults] - Maximum number of notifications to return per page. The default is 100.
    *
-   * [pageToken] - Token for the page to be retrieved
+   * [pageToken] - The token to specify the page of results to retrieve.
    *
    * [optParams] - Additional query parameters
    */
@@ -1241,9 +1279,9 @@ class NotificationsResource_ {
    *
    * [request] - Notification to send in this request
    *
-   * [customer] - Obfuscated customer ID of the domain for which notification is to be updated
+   * [customer] - The unique ID for the customer's Google account.
    *
-   * [notificationId] - Id of the notification to be updated.
+   * [notificationId] - The unique ID of the notification.
    *
    * [optParams] - Additional query parameters
    */
@@ -1276,13 +1314,13 @@ class NotificationsResource_ {
   }
 
   /**
-   * Updates a notification
+   * Updates a notification.
    *
    * [request] - Notification to send in this request
    *
-   * [customer] - Obfuscated customer ID of the domain for which notification is to be updated
+   * [customer] - The unique ID for the customer's Google account.
    *
-   * [notificationId] - Id of the notification to be updated.
+   * [notificationId] - The unique ID of the notification.
    *
    * [optParams] - Additional query parameters
    */
@@ -1567,11 +1605,11 @@ class TokensResource_ {
       _client = client;
 
   /**
-   * Delete all OAuth tokens issued by the user for an app domain.
+   * Delete all access tokens issued by a user for an application.
    *
-   * [userKey] - Email or immutable Id of the user
+   * [userKey] - Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID.
    *
-   * [clientId] - The app domain.
+   * [clientId] - The Client ID of the application the token is issued to.
    *
    * [optParams] - Additional query parameters
    */
@@ -1603,11 +1641,11 @@ class TokensResource_ {
   }
 
   /**
-   * Get the OAuth token issued by the user for an app domain.
+   * Get information about an access token issued by a user.
    *
-   * [userKey] - Email or immutable Id of the user
+   * [userKey] - Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID.
    *
-   * [clientId] - The app domain.
+   * [clientId] - The Client ID of the application the token is issued to.
    *
    * [optParams] - Additional query parameters
    */
@@ -1640,9 +1678,9 @@ class TokensResource_ {
   }
 
   /**
-   * List the OAuth tokens issued by the user.
+   * Returns the set of current, valid verification codes for the specified user.
    *
-   * [userKey] - Email or immutable Id of the user
+   * [userKey] - Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID.
    *
    * [optParams] - Additional query parameters
    */
@@ -1788,6 +1826,14 @@ class UsersResource_ {
    *
    * [domain] - Name of the domain. Fill this field to get users from only this domain. To return all users in a multi-domain fill customer field instead.
    *
+   * [event] - Event on which subscription is intended (if subscribing)
+   *   Allowed values:
+   *     add - User Created Event
+   *     delete - User Deleted Event
+   *     makeAdmin - User Admin Status Change Event
+   *     undelete - User Undeleted Event
+   *     update - User Updated Event
+   *
    * [maxResults] - Maximum number of results to return. Default is 100. Max allowed is 500
    *   Minimum: 1
    *   Maximum: 500
@@ -1800,7 +1846,7 @@ class UsersResource_ {
    *
    * [pageToken] - Token to specify next page in the list
    *
-   * [query] - Query string for prefix matching searches. Should be of the form "key:value*" where key can be "email", "givenName" or "familyName". The asterisk is required, for example: "givenName:Ann*" is a valid query.
+   * [query] - Query string search. Should be of the form "" where field can be any of supported fields, operators can be one of '=' for exact match or ':' for prefix match. For prefix match, the value should always be followed by a *.
    *
    * [showDeleted] - If set to true retrieves the list of deleted users. Default is false
    *
@@ -1811,7 +1857,7 @@ class UsersResource_ {
    *
    * [optParams] - Additional query parameters
    */
-  async.Future<Users> list({core.String customer, core.String domain, core.int maxResults, core.String orderBy, core.String pageToken, core.String query, core.String showDeleted, core.String sortOrder, core.Map optParams}) {
+  async.Future<Users> list({core.String customer, core.String domain, core.String event, core.int maxResults, core.String orderBy, core.String pageToken, core.String query, core.String showDeleted, core.String sortOrder, core.Map optParams}) {
     var url = "users";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -1819,6 +1865,10 @@ class UsersResource_ {
     var paramErrors = new core.List();
     if (customer != null) queryParams["customer"] = customer;
     if (domain != null) queryParams["domain"] = domain;
+    if (event != null && !["add", "delete", "makeAdmin", "undelete", "update"].contains(event)) {
+      paramErrors.add("Allowed values for event: add, delete, makeAdmin, undelete, update");
+    }
+    if (event != null) queryParams["event"] = event;
     if (maxResults != null) queryParams["maxResults"] = maxResults;
     if (orderBy != null && !["email", "familyName", "givenName"].contains(orderBy)) {
       paramErrors.add("Allowed values for orderBy: email, familyName, givenName");
@@ -1986,6 +2036,88 @@ class UsersResource_ {
     return response
       .then((data) => new User.fromJson(data));
   }
+
+  /**
+   * Watch for changes in users list
+   *
+   * [request] - Channel to send in this request
+   *
+   * [customer] - Immutable id of the Google Apps account. In case of multi-domain, to fetch all users for a customer, fill this field instead of domain.
+   *
+   * [domain] - Name of the domain. Fill this field to get users from only this domain. To return all users in a multi-domain fill customer field instead.
+   *
+   * [event] - Event on which subscription is intended (if subscribing)
+   *   Allowed values:
+   *     add - User Created Event
+   *     delete - User Deleted Event
+   *     makeAdmin - User Admin Status Change Event
+   *     undelete - User Undeleted Event
+   *     update - User Updated Event
+   *
+   * [maxResults] - Maximum number of results to return. Default is 100. Max allowed is 500
+   *   Minimum: 1
+   *   Maximum: 500
+   *
+   * [orderBy] - Column to use for sorting results
+   *   Allowed values:
+   *     email - Primary email of the user.
+   *     familyName - User's family name.
+   *     givenName - User's given name.
+   *
+   * [pageToken] - Token to specify next page in the list
+   *
+   * [query] - Query string search. Should be of the form "" where field can be any of supported fields, operators can be one of '=' for exact match or ':' for prefix match. For prefix match, the value should always be followed by a *.
+   *
+   * [showDeleted] - If set to true retrieves the list of deleted users. Default is false
+   *
+   * [sortOrder] - Whether to return results in ascending or descending order.
+   *   Allowed values:
+   *     ASCENDING - Ascending order.
+   *     DESCENDING - Descending order.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<Channel> watch(Channel request, {core.String customer, core.String domain, core.String event, core.int maxResults, core.String orderBy, core.String pageToken, core.String query, core.String showDeleted, core.String sortOrder, core.Map optParams}) {
+    var url = "users/watch";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (customer != null) queryParams["customer"] = customer;
+    if (domain != null) queryParams["domain"] = domain;
+    if (event != null && !["add", "delete", "makeAdmin", "undelete", "update"].contains(event)) {
+      paramErrors.add("Allowed values for event: add, delete, makeAdmin, undelete, update");
+    }
+    if (event != null) queryParams["event"] = event;
+    if (maxResults != null) queryParams["maxResults"] = maxResults;
+    if (orderBy != null && !["email", "familyName", "givenName"].contains(orderBy)) {
+      paramErrors.add("Allowed values for orderBy: email, familyName, givenName");
+    }
+    if (orderBy != null) queryParams["orderBy"] = orderBy;
+    if (pageToken != null) queryParams["pageToken"] = pageToken;
+    if (query != null) queryParams["query"] = query;
+    if (showDeleted != null) queryParams["showDeleted"] = showDeleted;
+    if (sortOrder != null && !["ASCENDING", "DESCENDING"].contains(sortOrder)) {
+      paramErrors.add("Allowed values for sortOrder: ASCENDING, DESCENDING");
+    }
+    if (sortOrder != null) queryParams["sortOrder"] = sortOrder;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "POST", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new Channel.fromJson(data));
+  }
 }
 
 class UsersAliasesResource_ {
@@ -2071,14 +2203,23 @@ class UsersAliasesResource_ {
    *
    * [userKey] - Email or immutable Id of the user
    *
+   * [event] - Event on which subscription is intended (if subscribing)
+   *   Allowed values:
+   *     add - Alias Created Event
+   *     delete - Alias Deleted Event
+   *
    * [optParams] - Additional query parameters
    */
-  async.Future<Aliases> list(core.String userKey, {core.Map optParams}) {
+  async.Future<Aliases> list(core.String userKey, {core.String event, core.Map optParams}) {
     var url = "users/{userKey}/aliases";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
 
     var paramErrors = new core.List();
+    if (event != null && !["add", "delete"].contains(event)) {
+      paramErrors.add("Allowed values for event: add, delete");
+    }
+    if (event != null) queryParams["event"] = event;
     if (userKey == null) paramErrors.add("userKey is required");
     if (userKey != null) urlParams["userKey"] = userKey;
     if (optParams != null) {
@@ -2097,6 +2238,50 @@ class UsersAliasesResource_ {
     response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
     return response
       .then((data) => new Aliases.fromJson(data));
+  }
+
+  /**
+   * Watch for changes in user aliases list
+   *
+   * [request] - Channel to send in this request
+   *
+   * [userKey] - Email or immutable Id of the user
+   *
+   * [event] - Event on which subscription is intended (if subscribing)
+   *   Allowed values:
+   *     add - Alias Created Event
+   *     delete - Alias Deleted Event
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<Channel> watch(Channel request, core.String userKey, {core.String event, core.Map optParams}) {
+    var url = "users/{userKey}/aliases/watch";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (event != null && !["add", "delete"].contains(event)) {
+      paramErrors.add("Allowed values for event: add, delete");
+    }
+    if (event != null) queryParams["event"] = event;
+    if (userKey == null) paramErrors.add("userKey is required");
+    if (userKey != null) urlParams["userKey"] = userKey;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "POST", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new Channel.fromJson(data));
   }
 }
 
@@ -2283,7 +2468,7 @@ class VerificationCodesResource_ {
   }
 
   /**
-   * Invalidate the backup verification codes for the user.
+   * Invalidate the current backup verification codes for the user.
    *
    * [userKey] - Email or immutable Id of the user
    *
@@ -2315,9 +2500,9 @@ class VerificationCodesResource_ {
   }
 
   /**
-   * List the backup verification codes for the user.
+   * Returns the current set of valid backup verification codes for the specified user.
    *
-   * [userKey] - Email or immutable Id of the user
+   * [userKey] - Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID.
    *
    * [optParams] - Additional query parameters
    */

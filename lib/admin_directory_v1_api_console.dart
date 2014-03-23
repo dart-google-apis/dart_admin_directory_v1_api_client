@@ -6,7 +6,7 @@ import 'package:google_admin_directory_v1_api/src/console_client.dart';
 
 import "package:google_admin_directory_v1_api/admin_directory_v1_api_client.dart";
 
-/** Apps Directory API lets you view and manage enterprise resources like user, groups, OrgUnit, devices, tokens, asps, verification codes. */
+/** The Admin SDK Directory API lets you view and manage enterprise resources such as users and groups, administrative notifications, security features, and more. */
 class Admin extends Client with ConsoleClient {
 
   /** OAuth Scope2: View and manage your Chrome OS devices' metadata */
