@@ -1,6 +1,6 @@
 part of admin_directory_v1_api;
 
-/** JSON template for Alias object in Apps Directory API. */
+/** JSON template for Alias object in Directory API. */
 class Alias {
 
   /** A alias email */
@@ -65,7 +65,7 @@ class Alias {
 
 }
 
-/** JSON response template to list aliases in Apps Directory API. */
+/** JSON response template to list aliases in Directory API. */
 class Aliases {
 
   /** List of alias objects. */
@@ -351,7 +351,7 @@ class Channel {
 
 }
 
-/** JSON template for Chrome Os Device resource in Apps Directory API. */
+/** JSON template for Chrome Os Device resource in Directory API. */
 class ChromeOsDevice {
 
   /** Address or location of the device as noted by the administrator */
@@ -369,6 +369,9 @@ class ChromeOsDevice {
   /** ETag of the resource. */
   core.String etag;
 
+  /** Chromebook Mac Address on ethernet network interface (Read-only) */
+  core.String ethernetMacAddress;
+
   /** Chromebook firmware version (Read-only) */
   core.String firmwareVersion;
 
@@ -381,7 +384,7 @@ class ChromeOsDevice {
   /** Date and time the device was last synchronized with the policy settings in the Google Apps administrator control panel (Read-only) */
   core.String lastSync;
 
-  /** Chromebook Mac Address (Read-only) */
+  /** Chromebook Mac Address on wifi network interface (Read-only) */
   core.String macAddress;
 
   /** Mobile Equipment identifier for the 3G mobile card in the Chromebook (Read-only) */
@@ -405,6 +408,9 @@ class ChromeOsDevice {
   /** Chromebook platform version (Read-only) */
   core.String platformVersion;
 
+  /** List of recent device users, in descending order by last login time (Read-only) */
+  core.List<ChromeOsDeviceRecentUsers> recentUsers;
+
   /** Chromebook serial number (Read-only) */
   core.String serialNumber;
 
@@ -414,7 +420,7 @@ class ChromeOsDevice {
   /** Final date the device will be supported (Read-only) */
   core.String supportEndDate;
 
-  /** Will Chromebook auto reniew after support end date (Read-only) */
+  /** Will Chromebook auto renew after support end date (Read-only) */
   core.bool willAutoRenew;
 
   /** Create new ChromeOsDevice from JSON data */
@@ -433,6 +439,9 @@ class ChromeOsDevice {
     }
     if (json.containsKey("etag")) {
       etag = json["etag"];
+    }
+    if (json.containsKey("ethernetMacAddress")) {
+      ethernetMacAddress = json["ethernetMacAddress"];
     }
     if (json.containsKey("firmwareVersion")) {
       firmwareVersion = json["firmwareVersion"];
@@ -470,6 +479,9 @@ class ChromeOsDevice {
     if (json.containsKey("platformVersion")) {
       platformVersion = json["platformVersion"];
     }
+    if (json.containsKey("recentUsers")) {
+      recentUsers = json["recentUsers"].map((recentUsersItem) => new ChromeOsDeviceRecentUsers.fromJson(recentUsersItem)).toList();
+    }
     if (json.containsKey("serialNumber")) {
       serialNumber = json["serialNumber"];
     }
@@ -502,6 +514,9 @@ class ChromeOsDevice {
     }
     if (etag != null) {
       output["etag"] = etag;
+    }
+    if (ethernetMacAddress != null) {
+      output["ethernetMacAddress"] = ethernetMacAddress;
     }
     if (firmwareVersion != null) {
       output["firmwareVersion"] = firmwareVersion;
@@ -539,6 +554,9 @@ class ChromeOsDevice {
     if (platformVersion != null) {
       output["platformVersion"] = platformVersion;
     }
+    if (recentUsers != null) {
+      output["recentUsers"] = recentUsers.map((recentUsersItem) => recentUsersItem.toJson()).toList();
+    }
     if (serialNumber != null) {
       output["serialNumber"] = serialNumber;
     }
@@ -560,7 +578,44 @@ class ChromeOsDevice {
 
 }
 
-/** JSON response template for List Chrome OS Devices operation in Apps Directory API. */
+class ChromeOsDeviceRecentUsers {
+
+  /** Email address of the user. Present only if the user type is managed */
+  core.String email;
+
+  /** The type of the user */
+  core.String type;
+
+  /** Create new ChromeOsDeviceRecentUsers from JSON data */
+  ChromeOsDeviceRecentUsers.fromJson(core.Map json) {
+    if (json.containsKey("email")) {
+      email = json["email"];
+    }
+    if (json.containsKey("type")) {
+      type = json["type"];
+    }
+  }
+
+  /** Create JSON Object for ChromeOsDeviceRecentUsers */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (email != null) {
+      output["email"] = email;
+    }
+    if (type != null) {
+      output["type"] = type;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of ChromeOsDeviceRecentUsers */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+/** JSON response template for List Chrome OS Devices operation in Directory API. */
 class ChromeOsDevices {
 
   /** List of Chrome OS Device objects. */
@@ -616,7 +671,7 @@ class ChromeOsDevices {
 
 }
 
-/** JSON template for Group resource in Apps Directory API. */
+/** JSON template for Group resource in Directory API. */
 class Group {
 
   /** Is the group created by admin (Read-only) * */
@@ -726,7 +781,7 @@ class Group {
 
 }
 
-/** JSON response template for List Groups operation in Apps Directory API. */
+/** JSON response template for List Groups operation in Directory API. */
 class Groups {
 
   /** ETag of the resource. */
@@ -782,7 +837,7 @@ class Groups {
 
 }
 
-/** JSON template for Member resource in Apps Directory API. */
+/** JSON template for Member resource in Directory API. */
 class Member {
 
   /** Email of member (Read-only) */
@@ -856,7 +911,7 @@ class Member {
 
 }
 
-/** JSON response template for List Members operation in Apps Directory API. */
+/** JSON response template for List Members operation in Directory API. */
 class Members {
 
   /** ETag of the resource. */
@@ -912,11 +967,23 @@ class Members {
 
 }
 
-/** JSON template for Mobile Device resource in Apps Directory API. */
+/** JSON template for Mobile Device resource in Directory API. */
 class MobileDevice {
 
   /** List of applications installed on Mobile Device */
   core.List<MobileDeviceApplications> applications;
+
+  /** Mobile Device Baseband version (Read-only) */
+  core.String basebandVersion;
+
+  /** Mobile Device Build number (Read-only) */
+  core.String buildNumber;
+
+  /** The default locale used on the Mobile Device (Read-only) */
+  core.String defaultLanguage;
+
+  /** Mobile Device compromised status (Read-only) */
+  core.String deviceCompromisedStatus;
 
   /** Mobile Device serial number (Read-only) */
   core.String deviceId;
@@ -933,11 +1000,23 @@ class MobileDevice {
   /** Mobile Device Hardware Id (Read-only) */
   core.String hardwareId;
 
+  /** Mobile Device IMEI number (Read-only) */
+  core.String imei;
+
+  /** Mobile Device Kernel version (Read-only) */
+  core.String kernelVersion;
+
   /** Kind of resource this is. */
   core.String kind;
 
   /** Date and time the device was last synchronized with the policy settings in the Google Apps administrator control panel (Read-only) */
   core.String lastSync;
+
+  /** Boolean indicating if this account is on owner/primary profile or not (Read-only) */
+  core.bool managedAccountIsOnOwnerProfile;
+
+  /** Mobile Device MEID number (Read-only) */
+  core.String meid;
 
   /** Name of the model of the device */
   core.String model;
@@ -945,11 +1024,17 @@ class MobileDevice {
   /** List of owner user's names (Read-only) */
   core.List<core.String> name;
 
+  /** Mobile Device mobile or network operator (if available) (Read-only) */
+  core.String networkOperator;
+
   /** Name of the mobile operating system */
   core.String os;
 
   /** Unique identifier of Mobile Device (Read-only) */
   core.String resourceId;
+
+  /** Mobile Device SSN or Serial Number (Read-only) */
+  core.String serialNumber;
 
   /** Status of the device (Read-only) */
   core.String status;
@@ -960,10 +1045,25 @@ class MobileDevice {
   /** Mobile Device user agent */
   core.String userAgent;
 
+  /** Mobile Device WiFi MAC address (Read-only) */
+  core.String wifiMacAddress;
+
   /** Create new MobileDevice from JSON data */
   MobileDevice.fromJson(core.Map json) {
     if (json.containsKey("applications")) {
       applications = json["applications"].map((applicationsItem) => new MobileDeviceApplications.fromJson(applicationsItem)).toList();
+    }
+    if (json.containsKey("basebandVersion")) {
+      basebandVersion = json["basebandVersion"];
+    }
+    if (json.containsKey("buildNumber")) {
+      buildNumber = json["buildNumber"];
+    }
+    if (json.containsKey("defaultLanguage")) {
+      defaultLanguage = json["defaultLanguage"];
+    }
+    if (json.containsKey("deviceCompromisedStatus")) {
+      deviceCompromisedStatus = json["deviceCompromisedStatus"];
     }
     if (json.containsKey("deviceId")) {
       deviceId = json["deviceId"];
@@ -980,11 +1080,23 @@ class MobileDevice {
     if (json.containsKey("hardwareId")) {
       hardwareId = json["hardwareId"];
     }
+    if (json.containsKey("imei")) {
+      imei = json["imei"];
+    }
+    if (json.containsKey("kernelVersion")) {
+      kernelVersion = json["kernelVersion"];
+    }
     if (json.containsKey("kind")) {
       kind = json["kind"];
     }
     if (json.containsKey("lastSync")) {
       lastSync = json["lastSync"];
+    }
+    if (json.containsKey("managedAccountIsOnOwnerProfile")) {
+      managedAccountIsOnOwnerProfile = json["managedAccountIsOnOwnerProfile"];
+    }
+    if (json.containsKey("meid")) {
+      meid = json["meid"];
     }
     if (json.containsKey("model")) {
       model = json["model"];
@@ -992,11 +1104,17 @@ class MobileDevice {
     if (json.containsKey("name")) {
       name = json["name"].toList();
     }
+    if (json.containsKey("networkOperator")) {
+      networkOperator = json["networkOperator"];
+    }
     if (json.containsKey("os")) {
       os = json["os"];
     }
     if (json.containsKey("resourceId")) {
       resourceId = json["resourceId"];
+    }
+    if (json.containsKey("serialNumber")) {
+      serialNumber = json["serialNumber"];
     }
     if (json.containsKey("status")) {
       status = json["status"];
@@ -1007,6 +1125,9 @@ class MobileDevice {
     if (json.containsKey("userAgent")) {
       userAgent = json["userAgent"];
     }
+    if (json.containsKey("wifiMacAddress")) {
+      wifiMacAddress = json["wifiMacAddress"];
+    }
   }
 
   /** Create JSON Object for MobileDevice */
@@ -1015,6 +1136,18 @@ class MobileDevice {
 
     if (applications != null) {
       output["applications"] = applications.map((applicationsItem) => applicationsItem.toJson()).toList();
+    }
+    if (basebandVersion != null) {
+      output["basebandVersion"] = basebandVersion;
+    }
+    if (buildNumber != null) {
+      output["buildNumber"] = buildNumber;
+    }
+    if (defaultLanguage != null) {
+      output["defaultLanguage"] = defaultLanguage;
+    }
+    if (deviceCompromisedStatus != null) {
+      output["deviceCompromisedStatus"] = deviceCompromisedStatus;
     }
     if (deviceId != null) {
       output["deviceId"] = deviceId;
@@ -1031,11 +1164,23 @@ class MobileDevice {
     if (hardwareId != null) {
       output["hardwareId"] = hardwareId;
     }
+    if (imei != null) {
+      output["imei"] = imei;
+    }
+    if (kernelVersion != null) {
+      output["kernelVersion"] = kernelVersion;
+    }
     if (kind != null) {
       output["kind"] = kind;
     }
     if (lastSync != null) {
       output["lastSync"] = lastSync;
+    }
+    if (managedAccountIsOnOwnerProfile != null) {
+      output["managedAccountIsOnOwnerProfile"] = managedAccountIsOnOwnerProfile;
+    }
+    if (meid != null) {
+      output["meid"] = meid;
     }
     if (model != null) {
       output["model"] = model;
@@ -1043,11 +1188,17 @@ class MobileDevice {
     if (name != null) {
       output["name"] = name.toList();
     }
+    if (networkOperator != null) {
+      output["networkOperator"] = networkOperator;
+    }
     if (os != null) {
       output["os"] = os;
     }
     if (resourceId != null) {
       output["resourceId"] = resourceId;
+    }
+    if (serialNumber != null) {
+      output["serialNumber"] = serialNumber;
     }
     if (status != null) {
       output["status"] = status;
@@ -1057,6 +1208,9 @@ class MobileDevice {
     }
     if (userAgent != null) {
       output["userAgent"] = userAgent;
+    }
+    if (wifiMacAddress != null) {
+      output["wifiMacAddress"] = wifiMacAddress;
     }
 
     return output;
@@ -1131,7 +1285,7 @@ class MobileDeviceApplications {
 
 }
 
-/** JSON request template for firing commands on Mobile Device in Apps Directory Devices API. */
+/** JSON request template for firing commands on Mobile Device in Directory Devices API. */
 class MobileDeviceAction {
 
   /** Action to be taken on the Mobile Device */
@@ -1160,7 +1314,7 @@ class MobileDeviceAction {
 
 }
 
-/** JSON response template for List Mobile Devices operation in Apps Directory API. */
+/** JSON response template for List Mobile Devices operation in Directory API. */
 class MobileDevices {
 
   /** ETag of the resource. */
@@ -1372,7 +1526,7 @@ class Notifications {
 
 }
 
-/** JSON template for Org Unit resource in Apps Directory API. */
+/** JSON template for Org Unit resource in Directory API. */
 class OrgUnit {
 
   /** Should block inheritance */
@@ -1455,7 +1609,7 @@ class OrgUnit {
 
 }
 
-/** JSON response template for List Organization Units operation in Apps Directory API. */
+/** JSON response template for List Organization Units operation in Directory API. */
 class OrgUnits {
 
   /** ETag of the resource. */
@@ -1502,7 +1656,7 @@ class OrgUnits {
 
 }
 
-/** JSON template for token resource in Apps Directory API. */
+/** JSON template for token resource in Directory API. */
 class Token {
 
   /** Whether the application is registered with Google. The value is true if the application has an anonymous Client ID. */
@@ -1594,7 +1748,7 @@ class Token {
 
 }
 
-/** JSON response template for List tokens operation in Apps Directory API. */
+/** JSON response template for List tokens operation in Directory API. */
 class Tokens {
 
   /** ETag of the resource. */
@@ -1644,8 +1798,7 @@ class Tokens {
 /** JSON template for User object in Apps Directory API. */
 class User {
 
-  /** Addresses of User */
-  core.List<UserAddress> addresses;
+  core.Object addresses;
 
   /** Indicates if user has agreed to terms (Read-only) */
   core.bool agreedToTerms;
@@ -1664,14 +1817,12 @@ class User {
 
   core.String deletionTime;
 
-  /** Emails of User */
-  core.List<UserEmail> emails;
+  core.Object emails;
 
   /** ETag of the resource. */
   core.String etag;
 
-  /** The external Ids of User * */
-  core.List<UserExternalId> externalIds;
+  core.Object externalIds;
 
   /** Hash function name for password. Supported are MD5, SHA-1 and crypt */
   core.String hashFunction;
@@ -1679,8 +1830,7 @@ class User {
   /** Unique identifier of User (Read-only) */
   core.String id;
 
-  /** User's Instant Messenger */
-  core.List<UserIm> ims;
+  core.Object ims;
 
   /** Boolean indicating if user is included in Global Address List */
   core.bool includeInGlobalAddressList;
@@ -1712,20 +1862,17 @@ class User {
   /** OrgUnit of User */
   core.String orgUnitPath;
 
-  /** Organizations of User */
-  core.List<UserOrganization> organizations;
+  core.Object organizations;
 
   /** User's password */
   core.String password;
 
-  /** Phone numbers of User */
-  core.List<UserPhone> phones;
+  core.Object phones;
 
   /** username of User */
   core.String primaryEmail;
 
-  /** The Relations of User * */
-  core.List<UserRelation> relations;
+  core.Object relations;
 
   /** Indicates if user is suspended */
   core.bool suspended;
@@ -1739,7 +1886,7 @@ class User {
   /** Create new User from JSON data */
   User.fromJson(core.Map json) {
     if (json.containsKey("addresses")) {
-      addresses = json["addresses"].map((addressesItem) => new UserAddress.fromJson(addressesItem)).toList();
+      addresses = json["addresses"];
     }
     if (json.containsKey("agreedToTerms")) {
       agreedToTerms = json["agreedToTerms"];
@@ -1760,13 +1907,13 @@ class User {
       deletionTime = json["deletionTime"];
     }
     if (json.containsKey("emails")) {
-      emails = json["emails"].map((emailsItem) => new UserEmail.fromJson(emailsItem)).toList();
+      emails = json["emails"];
     }
     if (json.containsKey("etag")) {
       etag = json["etag"];
     }
     if (json.containsKey("externalIds")) {
-      externalIds = json["externalIds"].map((externalIdsItem) => new UserExternalId.fromJson(externalIdsItem)).toList();
+      externalIds = json["externalIds"];
     }
     if (json.containsKey("hashFunction")) {
       hashFunction = json["hashFunction"];
@@ -1775,7 +1922,7 @@ class User {
       id = json["id"];
     }
     if (json.containsKey("ims")) {
-      ims = json["ims"].map((imsItem) => new UserIm.fromJson(imsItem)).toList();
+      ims = json["ims"];
     }
     if (json.containsKey("includeInGlobalAddressList")) {
       includeInGlobalAddressList = json["includeInGlobalAddressList"];
@@ -1808,19 +1955,19 @@ class User {
       orgUnitPath = json["orgUnitPath"];
     }
     if (json.containsKey("organizations")) {
-      organizations = json["organizations"].map((organizationsItem) => new UserOrganization.fromJson(organizationsItem)).toList();
+      organizations = json["organizations"];
     }
     if (json.containsKey("password")) {
       password = json["password"];
     }
     if (json.containsKey("phones")) {
-      phones = json["phones"].map((phonesItem) => new UserPhone.fromJson(phonesItem)).toList();
+      phones = json["phones"];
     }
     if (json.containsKey("primaryEmail")) {
       primaryEmail = json["primaryEmail"];
     }
     if (json.containsKey("relations")) {
-      relations = json["relations"].map((relationsItem) => new UserRelation.fromJson(relationsItem)).toList();
+      relations = json["relations"];
     }
     if (json.containsKey("suspended")) {
       suspended = json["suspended"];
@@ -1838,7 +1985,7 @@ class User {
     var output = new core.Map();
 
     if (addresses != null) {
-      output["addresses"] = addresses.map((addressesItem) => addressesItem.toJson()).toList();
+      output["addresses"] = addresses;
     }
     if (agreedToTerms != null) {
       output["agreedToTerms"] = agreedToTerms;
@@ -1859,13 +2006,13 @@ class User {
       output["deletionTime"] = deletionTime;
     }
     if (emails != null) {
-      output["emails"] = emails.map((emailsItem) => emailsItem.toJson()).toList();
+      output["emails"] = emails;
     }
     if (etag != null) {
       output["etag"] = etag;
     }
     if (externalIds != null) {
-      output["externalIds"] = externalIds.map((externalIdsItem) => externalIdsItem.toJson()).toList();
+      output["externalIds"] = externalIds;
     }
     if (hashFunction != null) {
       output["hashFunction"] = hashFunction;
@@ -1874,7 +2021,7 @@ class User {
       output["id"] = id;
     }
     if (ims != null) {
-      output["ims"] = ims.map((imsItem) => imsItem.toJson()).toList();
+      output["ims"] = ims;
     }
     if (includeInGlobalAddressList != null) {
       output["includeInGlobalAddressList"] = includeInGlobalAddressList;
@@ -1907,19 +2054,19 @@ class User {
       output["orgUnitPath"] = orgUnitPath;
     }
     if (organizations != null) {
-      output["organizations"] = organizations.map((organizationsItem) => organizationsItem.toJson()).toList();
+      output["organizations"] = organizations;
     }
     if (password != null) {
       output["password"] = password;
     }
     if (phones != null) {
-      output["phones"] = phones.map((phonesItem) => phonesItem.toJson()).toList();
+      output["phones"] = phones;
     }
     if (primaryEmail != null) {
       output["primaryEmail"] = primaryEmail;
     }
     if (relations != null) {
-      output["relations"] = relations.map((relationsItem) => relationsItem.toJson()).toList();
+      output["relations"] = relations;
     }
     if (suspended != null) {
       output["suspended"] = suspended;
@@ -2088,7 +2235,7 @@ class UserEmail {
   /** If this is user's primary email. Only one entry could be marked as primary. */
   core.bool primary;
 
-  /** Each entry can have a type which indicates standard types of that entry. For example email could be of home, work etc. In addition to the standard type, an entry can have a custom type and can take any value Such typess should have the CUSTOM value as type and also have a customType value. */
+  /** Each entry can have a type which indicates standard types of that entry. For example email could be of home, work etc. In addition to the standard type, an entry can have a custom type and can take any value Such types should have the CUSTOM value as type and also have a customType value. */
   core.String type;
 
   /** Create new UserEmail from JSON data */
@@ -2191,10 +2338,10 @@ class UserIm {
   /** Instant messenger id. */
   core.String im;
 
-  /** If this is user's priamry im. Only one entry could be marked as primary. */
+  /** If this is user's primary im. Only one entry could be marked as primary. */
   core.bool primary;
 
-  /** Protocol used in the instant messenger. It should be one of the values from ImProtocolTypes map. Simalar to type, it can take a CUSTOM value and specify the custom name in customProtocol field. */
+  /** Protocol used in the instant messenger. It should be one of the values from ImProtocolTypes map. Similar to type, it can take a CUSTOM value and specify the custom name in customProtocol field. */
   core.String protocol;
 
   /** Each entry can have a type which indicates standard types of that entry. For example instant messengers could be of home, work etc. In addition to the standard type, an entry can have a custom type and can take any value. Such types should have the CUSTOM value as type and also have a customType value. */
@@ -2253,7 +2400,7 @@ class UserIm {
 
 }
 
-/** JSON request template for setting/revoking admin status of a user in Apps Directory API. */
+/** JSON request template for setting/revoking admin status of a user in Directory API. */
 class UserMakeAdmin {
 
   /** Boolean indicating new admin status of the user */
@@ -2282,7 +2429,7 @@ class UserMakeAdmin {
 
 }
 
-/** JSON template for name of a user in Apps Directory API. */
+/** JSON template for name of a user in Directory API. */
 class UserName {
 
   /** Last Name */
@@ -2356,7 +2503,7 @@ class UserOrganization {
   /** If it user's primary organization. */
   core.bool primary;
 
-  /** Symobol of the organization. */
+  /** Symbol of the organization. */
   core.String symbol;
 
   /** Title (designation) of the user in the organization. */
@@ -2504,7 +2651,7 @@ class UserPhone {
 
 }
 
-/** JSON template for Photo object in Apps Directory API. */
+/** JSON template for Photo object in Directory API. */
 class UserPhoto {
 
   /** ETag of the resource. */
@@ -2643,7 +2790,7 @@ class UserRelation {
 
 }
 
-/** JSON request template to undelete a user in Apps Directory API. */
+/** JSON request template to undelete a user in Directory API. */
 class UserUndelete {
 
   /** OrgUnit of User */
@@ -2737,7 +2884,7 @@ class Users {
 
 }
 
-/** JSON template for verification codes in Apps Directory API. */
+/** JSON template for verification codes in Directory API. */
 class VerificationCode {
 
   /** ETag of the resource. */
@@ -2793,7 +2940,7 @@ class VerificationCode {
 
 }
 
-/** JSON response template for List verification codes operation in Apps Directory API. */
+/** JSON response template for List verification codes operation in Directory API. */
 class VerificationCodes {
 
   /** ETag of the resource. */

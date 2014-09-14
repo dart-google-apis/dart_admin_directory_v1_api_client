@@ -1678,7 +1678,7 @@ class TokensResource_ {
   }
 
   /**
-   * Returns the set of current, valid verification codes for the specified user.
+   * Returns the set of tokens specified user has issued to 3rd party applications.
    *
    * [userKey] - Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID.
    *
